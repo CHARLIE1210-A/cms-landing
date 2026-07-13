@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2, AlertCircle, Paintbrush, ArrowRight } from "lucide-react"
+import { Loader2, AlertCircle, ArrowRight } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -90,8 +91,13 @@ export function OnboardingForm({ className, ...props }: React.ComponentProps<"di
               
               {/* Header */}
               <div className="flex flex-col items-center gap-2 text-center pb-2">
-                <div className="bg-brand-600 p-2 rounded-xl text-white shadow-card mb-2">
-                  <Paintbrush className="w-4 h-4" />
+                <div className="relative w-10 h-10 shadow-card mb-2">
+                  <Image
+                    src="/logo/product-logo.svg"
+                    alt="PaintCMS Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
                 <h1 className="font-heading font-extrabold text-2xl text-ink-primary">
                   Setup Your Workspace

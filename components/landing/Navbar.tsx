@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Paintbrush, Menu, X, ArrowRight, LogOut, Settings, LayoutDashboard, User } from "lucide-react";
+import { Menu, X, ArrowRight, LogOut, Settings, LayoutDashboard, User } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { staggerNav } from "@/lib/animations";
@@ -83,8 +84,13 @@ export default function Navbar() {
             
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="bg-brand-600 p-2 rounded-xl text-white shadow-card transition-transform group-hover:scale-105 duration-250">
-                <Paintbrush className="w-4 h-4" />
+              <div className="relative w-8 h-8 transition-transform group-hover:scale-105 duration-250">
+                <Image
+                  src="/logo/product-logo.svg"
+                  alt="PaintCMS Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="font-heading font-bold text-lg tracking-tight text-ink-primary">
                 Paint<span className="text-brand-600">CMS</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Paintbrush } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const categories = [
@@ -39,8 +39,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-4 space-y-4">
             <Link href="/" className="flex items-center gap-2 group w-fit">
-              <div className="bg-brand-600 p-2 rounded-xl text-white shadow-card transition-transform group-hover:scale-105 duration-250">
-                <Paintbrush className="w-4 h-4" />
+              <div className="relative w-8 h-8 transition-transform group-hover:scale-105 duration-250">
+                <Image
+                  src="/logo/product-logo.svg"
+                  alt="PaintCMS Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="font-heading font-bold text-lg tracking-tight text-ink-primary">
                 Paint<span className="text-brand-600">CMS</span>

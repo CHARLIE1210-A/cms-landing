@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
-import { Paintbrush, Shield, Settings, Users, Building } from "lucide-react"
+import { Shield, Settings, Users, Building } from "lucide-react"
+import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -63,8 +64,13 @@ export default async function DashboardPage() {
       <header className="sticky top-0 z-50 w-full border-b border-edge-default bg-surface/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/dashboard" className="flex items-center gap-2 group">
-            <div className="bg-brand-600 p-1.5 rounded-lg text-white shadow-card">
-              <Paintbrush className="w-4 h-4" />
+            <div className="relative w-7 h-7 shadow-card">
+              <Image
+                src="/logo/product-logo.svg"
+                alt="PaintCMS Logo"
+                fill
+                className="object-contain"
+              />
             </div>
             <span className="font-heading font-bold text-base tracking-tight text-ink-primary">
               Paint<span className="text-brand-600">CMS</span>
