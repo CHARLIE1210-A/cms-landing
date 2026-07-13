@@ -12,6 +12,7 @@ const config: Config = {
     fontFamily: {
       sans:    ['var(--font-inter)',    'system-ui', 'sans-serif'],
       display: ['var(--font-playfair)', 'Georgia',   'serif'],
+      heading: ['var(--font-playfair)', 'Georgia',   'serif'],
       mono:    ['var(--font-geist-mono)', 'monospace'],
     },
 

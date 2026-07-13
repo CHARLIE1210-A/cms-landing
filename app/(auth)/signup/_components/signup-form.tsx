@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
-import { AuthAlert } from "./auth-alert";
+import { AuthAlert } from "../../_components/auth-alert";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 const supabase = createClient();
@@ -135,7 +135,7 @@ export function SignupForm({
             </div>
           </Link>
           <div>
-            <CardTitle className="text-3xl">
+            <CardTitle className="font-heading font-extrabold text-2xl text-ink-primary">
               Create Account
             </CardTitle>
             <CardDescription>
