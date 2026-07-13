@@ -186,7 +186,7 @@ export function LoginForm({
           <div className="relative my-4">
             <Separator className="bg-edge-default" />
             <span className="bg-surface-raised absolute left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 text-xs text-muted-foreground uppercase font-bold tracking-wider">
-              Or continue with
+              Or
             </span>
           </div>
 
