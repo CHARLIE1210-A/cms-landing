@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { fadeUp } from "@/lib/animations";
 
 interface CountUpProps {
   target: string;
@@ -50,7 +51,7 @@ function CountUp({ target, duration = 1.2, prefix = "", suffix = "" }: CountUpPr
   };
 
   return (
-    <span ref={ref} className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter drop-shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+    <span ref={ref} className="font-mono font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter">
       {prefix}
       {formatNumber(count)}
       {suffix}
@@ -67,15 +68,15 @@ export default function MetricsStrip() {
   ];
 
   return (
-    <section className="bg-[#030712] py-16 sm:py-20 border-y border-white/5 relative overflow-hidden">
-      {/* Subtle background glow */}
+    <section className="bg-neutral-950 py-16 sm:py-20 border-y border-neutral-900 relative overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
       <div className="absolute inset-0 z-0 overflow-hidden opacity-30 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-gradient-to-r from-[#38bdf8]/10 via-[#0ea5e9]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-32 bg-gradient-to-r from-brand-500/10 via-brand-600/5 to-transparent rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
-          <p className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-gray-500">
+          <p className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-neutral-500">
             Trusted by 200+ Indian painting contractors
           </p>
         </div>
@@ -84,22 +85,22 @@ export default function MetricsStrip() {
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
               className={`space-y-3 flex flex-col items-center justify-center ${
-                idx < 3 ? "lg:border-r lg:border-white/5" : ""
+                idx < 3 ? "lg:border-r lg:border-neutral-900" : ""
               } px-4`}
             >
-              <div className="flex items-center justify-center text-[#38bdf8]">
+              <div className="flex items-center justify-center text-white">
                 <CountUp
                   target={stat.target}
                   prefix={stat.prefix}
                   suffix={stat.suffix}
                 />
               </div>
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-400 max-w-[140px] sm:max-w-none leading-snug">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-400 max-w-[140px] sm:max-w-none leading-snug">
                 {stat.label}
               </p>
             </motion.div>

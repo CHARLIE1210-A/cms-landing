@@ -1,42 +1,109 @@
-import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
+import { GeistMono } from 'geist/font/mono';
+
+import './globals.css';
+
+// ── Font definitions ───────────────────────────────────────────────────────
 
 const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
+  subsets:  ['latin'],
+  variable: '--font-inter',
+  weight:   ['400', '500', '600', '700'],
+  display:  'swap',
+  preload:  true,
 });
 
-const geist = Geist({
-  variable: "--font-heading",
-  subsets: ["latin"],
+const playfair = Playfair_Display({
+  subsets:  ['latin'],
+  variable: '--font-playfair',
+  weight:   ['700', '800'],
+  style:    ['normal', 'italic'],
+  display:  'swap',
+  preload:  true,
 });
+
+const geistMono = GeistMono;
+
+// ── Metadata ───────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "CMS for Painters | India's #1 Contractor Management System",
-  description: "Run every site. Pay every worker. Know every rupee. Track attendance, advances, wages, expenses, and project profitability from one simple dashboard. No more jugaad — just results.",
-  openGraph: {
-    title: "CMS for Painters | Contractor Management System",
-    description: "Run every site. Pay every worker. Know every rupee. Track attendance, advances, wages, expenses, and project profitability.",
-    type: "website",
-    locale: "en_IN",
+  metadataBase: new URL('https://paintcms.in'),
+
+  title: {
+    default:  'PaintCMS — Contractor Management for Painting Businesses',
+    template: '%s | PaintCMS',
   },
-  alternates: {
-    canonical: "/",
+
+  description:
+    'Run every site. Pay every worker. Know every rupee. ' +
+    'The complete management system for painting contractors — ' +
+    'attendance, wages, advances, and project profit tracking. No more jugaad — just results.',
+
+  keywords: [
+    'painting contractor software',
+    'worker attendance tracking India',
+    'painting business management',
+    'contractor payroll app',
+    'site management software',
+    'rupee tracking painters',
+  ],
+
+  authors:  [{ name: 'PaintCMS Team' }],
+  creator:  'PaintCMS',
+  publisher:'PaintCMS',
+
+  openGraph: {
+    type:        'website',
+    locale:      'en_IN',
+    url:         'https://paintcms.in',
+    siteName:    'PaintCMS',
+    title:       'PaintCMS — Contractor Management for Painting Businesses',
+    description: 'Run every site. Pay every worker. Know every rupee. No more jugaad — just results.',
+    images: [{
+      url:    '/og-image.png',
+      width:   1200,
+      height:  630,
+      alt:    'PaintCMS Dashboard Preview',
+    }],
+  },
+
+  twitter: {
+    card:        'summary_large_image',
+    title:       'PaintCMS — Contractor Management for Painting Businesses',
+    description: 'Run every site. Pay every worker. Know every rupee.',
+    images:      ['/og-image.png'],
+  },
+
+  icons: {
+    icon:   [
+      { url: '/favicon.ico' },
+    ],
   },
 };
 
+export const viewport: Viewport = {
+  themeColor:    '#ffffff',
+  colorScheme:   'light',
+  width:         'device-width',
+  initialScale:   1,
+  maximumScale:   5,
+};
+
+// ── Root layout ────────────────────────────────────────────────────────────
+
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geist.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#F9F9FA] text-[#0B192C]">
+      <body className="antialiased min-h-screen flex flex-col">
         {children}
       </body>
     </html>

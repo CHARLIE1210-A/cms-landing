@@ -1,72 +1,87 @@
+"use client";
+
 import Link from "next/link";
 import { Paintbrush } from "lucide-react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const footerGroups = [
+  const categories = [
     {
       title: "Product",
       links: [
         { name: "Features", href: "#features" },
-        { name: "How it Works", href: "#how-it-works" },
-        { name: "Pricing Plans", href: "#pricing" },
-        { name: "Estimate Tool", href: "#features" },
+        { name: "How it works", href: "#how-it-works" },
+        { name: "Pricing", href: "#pricing" },
       ],
     },
     {
       title: "Company",
       links: [
         { name: "About Us", href: "#" },
+        { name: "Contact", href: "#" },
         { name: "Careers", href: "#" },
-        { name: "Contact Support", href: "#" },
-        { name: "Success Stories", href: "#" },
       ],
     },
     {
       title: "Legal",
       links: [
-        { name: "Privacy Policy", href: "#" },
         { name: "Terms of Service", href: "#" },
+        { name: "Privacy Policy", href: "#" },
         { name: "Refund Policy", href: "#" },
-        { name: "Data Security", href: "#" },
       ],
     },
   ];
 
   return (
-    <footer className="bg-[#0b192c] border-t border-[#2c476f]/30 py-16 text-gray-400">
+    <footer className="bg-surface-base border-t border-edge-default py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pb-12 border-b border-[#2c476f]/20">
-          {/* Logo & Tagline */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 text-left">
+          
+          {/* Brand Info */}
           <div className="md:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="bg-[#008dda] p-2 rounded-lg text-white group-hover:scale-105 transition-transform shadow-md shadow-[#008dda]/20">
-                <Paintbrush className="w-5 h-5" />
+            <Link href="/" className="flex items-center gap-2 group w-fit">
+              <div className="bg-brand-600 p-2 rounded-xl text-white shadow-card transition-transform group-hover:scale-105 duration-250">
+                <Paintbrush className="w-4 h-4" />
               </div>
-              <span className="font-heading font-bold text-xl tracking-tight text-white">
-                Paint<span className="text-[#008dda]">CMS</span>
+              <span className="font-heading font-bold text-lg tracking-tight text-ink-primary">
+                Paint<span className="text-brand-600">CMS</span>
               </span>
             </Link>
-            <p className="text-sm font-semibold italic text-[#008dda] mt-2">
-              "Run every site. Pay every worker. Know every rupee."
+            <p className="text-xs text-ink-secondary leading-relaxed max-w-sm">
+              The Contractor Management System built specifically for Indian house painting businesses. Helping you track workers, daily wages, cash advances, and project profitability.
             </p>
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
-              PaintCMS is India's leading digital platform built specifically for small and medium painting contractors to track progress and stop wage leaks.
-            </p>
+            <div className="flex gap-4">
+              <Link href="#" className="p-2 rounded-lg bg-surface-overlay text-ink-secondary hover:text-ink-primary border border-edge-subtle">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </Link>
+              <Link href="#" className="p-2 rounded-lg bg-surface-overlay text-ink-secondary hover:text-ink-primary border border-edge-subtle">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+              </Link>
+              <Link href="#" className="p-2 rounded-lg bg-surface-overlay text-ink-secondary hover:text-ink-primary border border-edge-subtle">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
-          {/* Links Grid */}
-          <div className="grid grid-cols-3 gap-6 md:col-span-8">
-            {footerGroups.map((group) => (
-              <div key={group.title} className="space-y-4">
-                <h4 className="font-heading font-extrabold text-xs text-white uppercase tracking-wider">
-                  {group.title}
+          {/* Links Categories */}
+          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {categories.map((cat, idx) => (
+              <div key={idx} className="space-y-4">
+                <h4 className="text-xs font-extrabold uppercase tracking-widest text-ink-primary">
+                  {cat.title}
                 </h4>
-                <ul className="space-y-2 text-xs sm:text-sm">
-                  {group.links.map((link) => (
-                    <li key={link.name}>
-                      <Link href={link.href} className="hover:text-white transition-colors duration-200">
+                <ul className="space-y-2.5">
+                  {cat.links.map((link, lIdx) => (
+                    <li key={lIdx}>
+                      <Link
+                        href={link.href}
+                        className="text-xs text-ink-secondary hover:text-ink-primary transition-colors font-medium"
+                      >
                         {link.name}
                       </Link>
                     </li>
@@ -75,57 +90,16 @@ export default function Footer() {
               </div>
             ))}
           </div>
+
         </div>
 
-        {/* Socials & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© {currentYear} PaintCMS. All rights reserved. Made with ❤️ in India.</p>
-          
-          <div className="flex items-center gap-4 text-gray-400">
-            {[
-              {
-                icon: (
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                ),
-                href: "#",
-              },
-              {
-                icon: (
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
-                  </svg>
-                ),
-                href: "#",
-              },
-              {
-                icon: (
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                ),
-                href: "#",
-              },
-              {
-                icon: (
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                ),
-                href: "#",
-              },
-            ].map((soc, idx) => (
-              <a
-                key={idx}
-                href={soc.href}
-                className="hover:text-white transition-colors duration-200 bg-[#1a2f4c]/40 p-2 rounded-lg border border-[#2c476f]/20"
-                aria-label="Social Link"
-              >
-                {soc.icon}
-              </a>
-            ))}
-          </div>
+        <div className="mt-12 pt-8 border-t border-edge-subtle flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+          <p className="text-[10px] text-ink-tertiary font-bold uppercase tracking-wider">
+            &copy; {new Date().getFullYear()} PaintCMS. All rights reserved.
+          </p>
+          <p className="text-[10px] text-ink-tertiary font-bold uppercase tracking-wider">
+            Made with ❤️ for painting contractors in India
+          </p>
         </div>
       </div>
     </footer>

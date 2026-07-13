@@ -1,245 +1,270 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { UserCheck, Users, Coins, Calculator, Ruler, BarChart3, CheckCircle2 } from "lucide-react";
+import { Users, DollarSign, Wallet, Hammer, HelpCircle, PhoneCall, ChevronRight, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { fadeUp } from "@/lib/animations";
 
 export default function Features() {
-  const features = [
-    {
-      id: "attendance",
-      icon: <UserCheck className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Attendance Logs in 3 Taps",
-      description: "Mark present, absent, or half-day for painters in seconds. Automatic leave logging with direct SMS updates sent to workers to prevent end-of-month disputes.",
-      gridClass: "lg:col-span-8",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3">
-          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest pb-2 border-b border-white/5">
-            <span>Attendance Logs — Today</span>
-            <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">All Mark Complete</span>
-          </div>
-          <div className="space-y-2">
-            {[
-              { name: "Rajesh Kumar", role: "Master Painter", status: "Present", color: "bg-emerald-500 text-white" },
-              { name: "Amit Sharma", role: "Helper", status: "Half-Day", color: "bg-amber-500 text-[#030712]" },
-              { name: "Sanjay Singh", role: "Polisher", status: "Present", color: "bg-emerald-500 text-white" },
-            ].map((w, i) => (
-              <div key={i} className="flex justify-between items-center bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
-                <div>
-                  <h5 className="text-xs font-bold text-white">{w.name}</h5>
-                  <span className="text-[9px] text-gray-400 uppercase tracking-wider">{w.role}</span>
-                </div>
-                <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold ${w.color}`}>{w.status}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "payroll",
-      icon: <Coins className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Loose Cash Advance logs",
-      description: "Record mid-week advances on site. Saturday wages are calculated automatically: (Days Worked × Rate) − Advances.",
-      gridClass: "lg:col-span-4",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4">
-          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest border-b border-white/5 pb-2">
-            <span>Rajesh • Week Settlement</span>
-            <span className="text-emerald-400 font-bold">Calculated</span>
-          </div>
-          <div className="space-y-2 text-[11px] text-gray-300">
-            <div className="flex justify-between">
-              <span>Days Worked (5.5 @ ₹800)</span>
-              <span className="text-white font-bold">₹4,400</span>
-            </div>
-            <div className="flex justify-between text-amber-400 font-medium">
-              <span>Less: Cash Advances</span>
-              <span className="font-bold">- ₹1,500</span>
-            </div>
-            <hr className="border-white/5 my-2" />
-            <div className="flex justify-between text-emerald-400 font-bold text-xs">
-              <span>Net Saturday Payout</span>
-              <span>₹2,900</span>
-            </div>
-          </div>
-          <span className="block text-[9px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 text-center py-1 rounded-md font-bold uppercase tracking-wider">
-            ✓ Shared on WhatsApp
-          </span>
-        </div>
-      ),
-    },
-    {
-      id: "finances",
-      icon: <Calculator className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Live Expenses",
-      description: "Log paint cans purchased, brush supplies, transport, and chai/snacks on the spot. Match costs against budget.",
-      gridClass: "lg:col-span-4",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block pb-2 border-b border-white/5">Noida Office — Budget Status</span>
-          <div className="space-y-3">
-            <div>
-              <div className="flex justify-between text-[11px] text-gray-300 mb-1 font-semibold">
-                <span>Material Cost (Max ₹60k)</span>
-                <span className="text-white font-bold">₹54,500</span>
-              </div>
-              <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-                <div className="bg-[#38bdf8] h-full w-[90.8%]" />
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between text-[11px] text-gray-300 mb-1 font-semibold">
-                <span>Wages Paid (Max ₹80k)</span>
-                <span className="text-white font-bold">₹62,000</span>
-              </div>
-              <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-                <div className="bg-emerald-400 h-full w-[77.5%]" />
-              </div>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "calculator",
-      icon: <Ruler className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Paint Estimate & Quotation Builder",
-      description: "Input wall measurements to instantly calculate required paint volumes. Generate detailed client quotations with primers, putty layers, and labor wages to win deals quickly.",
-      gridClass: "lg:col-span-8",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4 text-left">
-          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest pb-2 border-b border-white/5">
-            <span>Wall Calculator</span>
-            <span className="text-[#38bdf8]">Automatic Estimate</span>
-          </div>
-          <div className="grid grid-cols-2 gap-4 text-[11px]">
-            <div className="bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
-              <span className="text-gray-400 block mb-0.5 font-semibold">Total Area</span>
-              <span className="font-extrabold text-white text-sm">3,200 sq ft</span>
-            </div>
-            <div className="bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
-              <span className="text-gray-400 block mb-0.5 font-semibold">Coat Setup</span>
-              <span className="font-extrabold text-white text-sm">2 Putty + 2 Paint</span>
-            </div>
-          </div>
-          <div className="bg-[#13243c]/20 p-3 rounded-lg border border-white/5 text-[10px] space-y-2 font-semibold">
-            <div className="flex justify-between text-gray-300">
-              <span>Estimated Putty</span>
-              <span className="text-white">14 Bags (40kg)</span>
-            </div>
-            <div className="flex justify-between text-gray-300">
-              <span>Estimated Emulsion</span>
-              <span className="text-white">58 Liters</span>
-            </div>
-            <div className="flex justify-between text-[#38bdf8] pt-1.5 border-t border-white/5 font-extrabold text-xs">
-              <span>Total Material Estimate</span>
-              <span>₹42,500</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "directory",
-      icon: <Users className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Skills & Wage Directory",
-      description: "Register worker details and daily wage rates. Avoid double-booking painters across sites.",
-      gridClass: "lg:col-span-4",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3 text-left">
-          <div className="flex items-center gap-3 bg-[#13243c]/40 p-3 rounded-xl border border-white/5">
-            <div className="w-9 h-9 rounded-full bg-[#38bdf8]/10 text-[#38bdf8] flex items-center justify-center font-bold text-xs border border-[#38bdf8]/20">
-              AS
-            </div>
-            <div>
-              <h5 className="text-xs font-bold text-white">Amit Sharma</h5>
-              <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Helper</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-3 text-[10px]">
-            <div className="bg-[#030712] p-2 rounded-lg border border-white/5">
-              <span className="text-gray-500 block mb-0.5 font-bold uppercase tracking-wider">Rate</span>
-              <span className="font-extrabold text-white">₹600/day</span>
-            </div>
-            <div className="bg-[#030712] p-2 rounded-lg border border-white/5">
-              <span className="text-gray-500 block mb-0.5 font-bold uppercase tracking-wider">Active</span>
-              <span className="font-extrabold text-white">Gurugram</span>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "analytics",
-      icon: <BarChart3 className="w-5 h-5 text-[#38bdf8]" />,
-      headline: "Consolidated Site Profits",
-      description: "A centralized dashboard summarizing expenses, material payouts, and margins across all active projects.",
-      gridClass: "lg:col-span-4",
-      preview: (
-        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3 text-left">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block pb-2 border-b border-white/5">Site Margin Leaderboard</span>
-          <div className="space-y-2">
-            {[
-              { site: "DLF Phase 3", margin: "38%", color: "bg-emerald-400" },
-              { site: "Nirvana Flat", margin: "24%", color: "bg-emerald-400" },
-              { site: "Omaxe Flat", margin: "-12%", color: "bg-red-400" },
-            ].map((s, i) => (
-              <div key={i} className="flex justify-between items-center text-[11px] bg-[#13243c]/20 p-2 rounded-lg">
-                <span className="text-gray-300 font-semibold">{s.site}</span>
-                <span className={s.color === "bg-red-400" ? "text-red-400 font-extrabold" : "text-emerald-400 font-extrabold"}>{s.margin} Margin</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ),
-    },
-  ];
+  // Calculator State
+  const [wallArea, setWallArea] = useState(2500);
+  const [materialRate, setMaterialRate] = useState(12);
+  const [laborRate, setLaborRate] = useState(15);
+  
+  // Attendance Log State
+  const [attendance, setAttendance] = useState([
+    { name: "Sanjay Singh", present: true },
+    { name: "Amit Sharma", present: true },
+    { name: "Rajesh Kumar", present: false },
+    { name: "Vijay Yadav", present: true },
+  ]);
+
+  const toggleAttendance = (index: number) => {
+    const nextAtt = [...attendance];
+    nextAtt[index].present = !nextAtt[index].present;
+    setAttendance(nextAtt);
+  };
+
+  const calculatedCost = wallArea * (materialRate + laborRate);
 
   return (
-    <section id="features" className="py-24 bg-white border-b border-[#e5e4da] relative">
+    <section id="features" className="py-24 bg-surface-base border-b border-edge-default relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-extrabold text-[#38bdf8] uppercase tracking-widest">
-            Executive Controls
-          </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0b1528] tracking-tighter leading-tight">
-            Stop guessing your cashflow. Run your business like a corporate firm.
+          <span className="eyebrow-pill">Features</span>
+          <h2 className="headline-section text-ink-primary">
+            Designed for painting workflows, not boardrooms
           </h2>
+          <p className="body-base text-ink-secondary">
+            Every feature is built to solve site friction directly. Zero training needed. Try the interactive tools below.
+          </p>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {features.map((feat, idx) => (
-            <motion.div
-              key={feat.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`bg-[#faf9f6]/60 border border-[#e5e4da]/75 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-premium hover:border-[#38bdf8]/40 transition-all duration-300 group ${feat.gridClass}`}
-            >
-              <div className="space-y-4 text-left">
-                <div className="inline-flex items-center justify-center p-3 rounded-xl bg-white border border-[#e5e4da]/60 text-[#38bdf8] shadow-sm group-hover:scale-105 transition-transform duration-300">
-                  {feat.icon}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+          
+          {/* Card 1: 3-Click Attendance Log (Grid Span 7) */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="md:col-span-7 card-feature bg-white flex flex-col justify-between"
+          >
+            <div className="text-left space-y-3">
+              <div className="p-3 bg-brand-50 text-brand-600 rounded-2xl border border-brand-100 w-11 h-11 flex items-center justify-center">
+                <Users className="w-5 h-5" />
+              </div>
+              <h3 className="headline-card text-ink-primary">
+                3-Click Worker Attendance
+              </h3>
+              <p className="body-sm text-ink-secondary max-w-md">
+                Supervisor logs attendance directly on their mobile browser. Tap green for present, orange for absent. Saves wages on ghost workers instantly.
+              </p>
+            </div>
+
+            {/* Interactive Widget: Live Attendance Log */}
+            <div className="mt-8 bg-surface-raised border border-edge-subtle rounded-2xl p-5 space-y-4">
+              <div className="flex items-center justify-between text-[10px] font-bold text-ink-tertiary uppercase tracking-widest pb-2 border-b border-edge-subtle">
+                <span>Site: DLF Villa 42</span>
+                <span className="text-brand-600">Mark Attendance</span>
+              </div>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {attendance.map((worker, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => toggleAttendance(idx)}
+                    className={`flex flex-col items-center justify-center p-3.5 rounded-xl border text-center transition-all ${
+                      worker.present
+                        ? "bg-emerald-500/5 border-emerald-500/20 text-emerald-700"
+                        : "bg-amber-500/5 border-amber-500/20 text-amber-600"
+                    }`}
+                  >
+                    <div className={`w-2.5 h-2.5 rounded-full mb-2 ${worker.present ? "bg-emerald-500" : "bg-amber-500"}`} />
+                    <span className="text-xs font-bold block truncate max-w-full text-ink-primary">{worker.name.split(" ")[0]}</span>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-ink-secondary mt-0.5">
+                      {worker.present ? "Present" : "Absent"}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <p className="text-[10px] text-ink-tertiary leading-normal text-left">
+                * Click a card to toggle presence. Worker receives automatic check-in SMS.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Interactive Profit Margin Calculator (Grid Span 5) */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="md:col-span-5 card-feature bg-white flex flex-col justify-between"
+          >
+            <div className="text-left space-y-3">
+              <div className="p-3 bg-gold-50 text-gold-600 rounded-2xl border border-gold-100 w-11 h-11 flex items-center justify-center">
+                <DollarSign className="w-5 h-5" />
+              </div>
+              <h3 className="headline-card text-ink-primary">
+                Smart Wall Quotations
+              </h3>
+              <p className="body-sm text-ink-secondary">
+                Generate estimates instantly. Input wall area and rates to calculate client quotations, painting budgets, and check margins.
+              </p>
+            </div>
+
+            {/* Interactive Widget: Live Estimator */}
+            <div className="mt-8 bg-surface-raised border border-edge-subtle rounded-2xl p-5 space-y-4">
+              <div className="flex items-center justify-between text-[10px] font-bold text-ink-tertiary uppercase tracking-widest pb-2 border-b border-edge-subtle">
+                <span>Wall Cost Estimator</span>
+                <span className="text-emerald-600 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Calculated</span>
+              </div>
+              
+              <div className="space-y-3 text-left">
+                <div>
+                  <label className="text-[10px] font-bold text-ink-secondary uppercase tracking-wider block mb-1">
+                    Wall Area (Sq.Ft): <span className="font-mono text-xs text-ink-primary font-bold">{wallArea}</span>
+                  </label>
+                  <input
+                    type="range"
+                    min="500"
+                    max="10000"
+                    step="500"
+                    value={wallArea}
+                    onChange={(e) => setWallArea(Number(e.target.value))}
+                    className="w-full h-1.5 bg-edge-subtle rounded-full appearance-none cursor-pointer accent-brand-600"
+                  />
                 </div>
-                <h3 className="font-heading font-extrabold text-xl text-[#0b1528] leading-tight">
-                  {feat.headline}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
-                  {feat.description}
-                </p>
-              </div>
 
-              {/* Graphic Preview */}
-              <div className="mt-8 pt-4 w-full">
-                {feat.preview}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[10px] font-bold text-ink-secondary uppercase tracking-wider block mb-1">
+                      Material (₹/Sq.Ft)
+                    </label>
+                    <Input
+                      type="number"
+                      value={materialRate}
+                      onChange={(e) => setMaterialRate(Number(e.target.value))}
+                      className="h-9 text-xs bg-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[10px] font-bold text-ink-secondary uppercase tracking-wider block mb-1">
+                      Labor (₹/Sq.Ft)
+                    </label>
+                    <Input
+                      type="number"
+                      value={laborRate}
+                      onChange={(e) => setLaborRate(Number(e.target.value))}
+                      className="h-9 text-xs bg-white"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center bg-brand-50 border border-brand-100 p-3 rounded-xl mt-2">
+                  <span className="text-xs font-bold text-brand-700">Estimated Cost:</span>
+                  <span className="text-sm font-extrabold text-brand-950 font-mono">₹{calculatedCost.toLocaleString("en-IN")}</span>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          {/* Card 3: Saturday Payroll Settlements (Grid Span 6) */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="md:col-span-6 card-feature bg-white flex flex-col justify-between"
+          >
+            <div className="text-left space-y-3">
+              <div className="p-3 bg-brand-50 text-brand-600 rounded-2xl border border-brand-100 w-11 h-11 flex items-center justify-center">
+                <Wallet className="w-5 h-5" />
+              </div>
+              <h3 className="headline-card text-ink-primary">
+                WhatsApp Payroll Slips
+              </h3>
+              <p className="body-sm text-ink-secondary">
+                At weekend settlements, share wages breakdowns (Wages − Advances) directly to workers on WhatsApp. Build trust with clear transparency.
+              </p>
+            </div>
+
+            {/* Custom SVG wage mock */}
+            <div className="mt-8 bg-surface-raised border border-edge-subtle rounded-2xl p-5 text-left space-y-3">
+              <div className="flex items-center justify-between text-[10px] font-bold text-ink-tertiary uppercase tracking-widest pb-2 border-b border-edge-subtle">
+                <span>WhatsApp Slip Generator</span>
+                <span className="text-emerald-500 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Ready</span>
+              </div>
+              <div className="bg-emerald-500/5 border border-emerald-500/10 p-3.5 rounded-xl space-y-2 text-xs">
+                <p className="font-bold text-emerald-800">✅ Slip for Sanjay Singh</p>
+                <div className="space-y-1 text-emerald-700 text-[10px] font-medium leading-relaxed font-mono">
+                  <p>• Total Present Days: 6 days</p>
+                  <p>• Wage Rate: ₹750/day</p>
+                  <p>• Total Wages Earned: ₹4,500</p>
+                  <p>• Less Advances Taken: -₹800</p>
+                  <p className="font-bold border-t border-emerald-200/50 pt-1 mt-1 text-xs">
+                    • Net Payable Amount: ₹3,700
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Card 4: Site Supervisor Mode (Grid Span 6) */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="md:col-span-6 card-feature bg-white flex flex-col justify-between"
+          >
+            <div className="text-left space-y-3">
+              <div className="p-3 bg-gold-50 text-gold-600 rounded-2xl border border-gold-100 w-11 h-11 flex items-center justify-center">
+                <Hammer className="w-5 h-5" />
+              </div>
+              <h3 className="headline-card text-ink-primary">
+                Site Material Logs
+              </h3>
+              <p className="body-sm text-ink-secondary">
+                Track primer, putty, paint buckets, and brushes consumed per site. Stop supervisors from stealing materials or leaking stock.
+              </p>
+            </div>
+
+            {/* Stock ledger widget */}
+            <div className="mt-8 bg-surface-raised border border-edge-subtle rounded-2xl p-5 text-left space-y-3">
+              <div className="flex items-center justify-between text-[10px] font-bold text-ink-tertiary uppercase tracking-widest pb-2 border-b border-edge-subtle">
+                <span>Material Log Ledger</span>
+                <span className="text-brand-600">DLF Villa</span>
+              </div>
+              <div className="space-y-2 text-xs">
+                {[
+                  { name: "Royal Luxury Emulsion", qty: "4 Buckets", status: "Stocked" },
+                  { name: "Wall Putty (Ultra)", qty: "12 Bags", status: "Consumed" },
+                  { name: "Paint Rollers & Brushes", qty: "8 Units", status: "Stocked" },
+                ].map((item, i) => (
+                  <div key={i} className="flex justify-between items-center bg-white border border-edge-subtle p-2.5 rounded-xl">
+                    <div>
+                      <h5 className="font-bold text-ink-primary">{item.name}</h5>
+                      <span className="text-[9px] text-ink-tertiary font-bold uppercase tracking-wider">{item.qty}</span>
+                    </div>
+                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                      item.status === "Consumed" ? "bg-red-50 text-red-600 border border-red-100" : "bg-emerald-50 text-emerald-600 border border-emerald-100"
+                    }`}>
+                      {item.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
         </div>
-        
       </div>
     </section>
   );

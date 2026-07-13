@@ -102,17 +102,17 @@ export default function SignupForm() {
   };
 
   return (
-    <Card className="w-full max-w-md border-gray-200/80 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl">
+    <Card className="w-full max-w-md border-edge-default shadow-card-xl bg-surface-raised rounded-2xl">
       <CardHeader className="space-y-2 text-center pt-8 px-8">
-        <CardTitle className="font-heading font-extrabold text-2xl text-[#0b192c]">
+        <CardTitle className="font-heading font-extrabold text-2xl text-ink-primary">
           Create Your Account
         </CardTitle>
-        <CardDescription className="text-gray-500 text-xs sm:text-sm">
+        <CardDescription className="text-ink-secondary text-xs sm:text-sm">
           Join 200+ contractors and start tracking your sites for free.
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="px-8 pb-6">
+      <CardContent className="px-8 pb-6 text-left">
         {/* Status Messages */}
         {errorMsg && (
           <div className="mb-4 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 p-3 rounded-xl text-xs sm:text-sm">
@@ -131,7 +131,7 @@ export default function SignupForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name Field */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="name">
+            <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="name">
               Full Name
             </label>
             <Input
@@ -141,7 +141,7 @@ export default function SignupForm() {
               disabled={loading || googleLoading}
               {...register("name")}
               className={`bg-white border ${
-                errors.name ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.name ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.name && (
@@ -151,7 +151,7 @@ export default function SignupForm() {
 
           {/* Email Field */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="email">
+            <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="email">
               Email Address
             </label>
             <Input
@@ -161,7 +161,7 @@ export default function SignupForm() {
               disabled={loading || googleLoading}
               {...register("email")}
               className={`bg-white border ${
-                errors.email ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.email ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.email && (
@@ -171,7 +171,7 @@ export default function SignupForm() {
 
           {/* Password Field */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="password">
+            <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="password">
               Password
             </label>
             <Input
@@ -181,7 +181,7 @@ export default function SignupForm() {
               disabled={loading || googleLoading}
               {...register("password")}
               className={`bg-white border ${
-                errors.password ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.password ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.password && (
@@ -191,7 +191,7 @@ export default function SignupForm() {
 
           {/* Confirm Password Field */}
           <div className="space-y-1">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="confirmPassword">
+            <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="confirmPassword">
               Confirm Password
             </label>
             <Input
@@ -201,7 +201,7 @@ export default function SignupForm() {
               disabled={loading || googleLoading}
               {...register("confirmPassword")}
               className={`bg-white border ${
-                errors.confirmPassword ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.confirmPassword ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.confirmPassword && (
@@ -217,15 +217,15 @@ export default function SignupForm() {
                 type="checkbox"
                 disabled={loading || googleLoading}
                 {...register("acceptTerms")}
-                className="w-4.5 h-4.5 text-[#008dda] border-gray-300 rounded focus:ring-[#008dda]/50 mt-0.5 cursor-pointer"
+                className="w-4.5 h-4.5 text-brand-600 border-edge-default rounded focus:ring-brand-500/50 mt-0.5 cursor-pointer"
               />
-              <label htmlFor="acceptTerms" className="text-xs text-gray-500 leading-normal cursor-pointer select-none">
+              <label htmlFor="acceptTerms" className="text-xs text-ink-secondary leading-normal cursor-pointer select-none">
                 I agree to the{" "}
-                <Link href="#" className="text-[#008dda] font-bold hover:text-[#0077b6]">
+                <Link href="#" className="text-brand-600 font-bold hover:text-brand-700">
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link href="#" className="text-[#008dda] font-bold hover:text-[#0077b6]">
+                <Link href="#" className="text-brand-600 font-bold hover:text-brand-700">
                   Privacy Policy
                 </Link>
                 .
@@ -240,7 +240,7 @@ export default function SignupForm() {
           <Button
             type="submit"
             disabled={loading || googleLoading}
-            className="w-full bg-[#008dda] hover:bg-[#0077b6] text-white font-bold h-11 rounded-xl border-0 shadow-lg shadow-[#008dda]/20 gap-2 mt-2"
+            className="w-full btn btn-primary btn-md rounded-xl mt-2"
           >
             {loading ? (
               <>
@@ -252,12 +252,11 @@ export default function SignupForm() {
           </Button>
         </form>
 
-        {/* Divider */}
-        <div className="relative my-5 text-center">
+        <div className="relative my-6 text-center">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200" />
+            <div className="w-full border-t border-edge-default" />
           </div>
-          <span className="relative bg-white px-3.5 text-xs text-gray-400 font-semibold uppercase tracking-wider">
+          <span className="relative bg-surface-raised px-3.5 text-xs text-ink-tertiary font-semibold uppercase tracking-wider">
             Or continue with
           </span>
         </div>
@@ -268,7 +267,7 @@ export default function SignupForm() {
           onClick={handleGoogleSignIn}
           disabled={loading || googleLoading}
           variant="outline"
-          className="w-full h-11 rounded-xl border-gray-200 text-gray-700 font-bold hover:bg-gray-50 gap-2.5"
+          className="w-full btn btn-secondary btn-md rounded-xl text-ink-secondary hover:bg-neutral-50 gap-2.5"
         >
           {googleLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -280,14 +279,14 @@ export default function SignupForm() {
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
             </svg>
           )}
-          Register with Google
+          Continue with Google
         </Button>
       </CardContent>
 
-      <CardFooter className="px-8 pb-8 pt-0 flex justify-center text-xs sm:text-sm text-gray-500">
+      <CardFooter className="px-8 pb-8 pt-0 flex justify-center text-xs sm:text-sm text-ink-secondary">
         Already have an account?{" "}
-        <Link href="/login" className="text-[#008dda] font-bold hover:text-[#0077b6] ml-1">
-          Sign In
+        <Link href="/login" className="text-brand-600 font-bold hover:text-brand-700 ml-1">
+          Log in instead
         </Link>
       </CardFooter>
     </Card>

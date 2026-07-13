@@ -85,17 +85,17 @@ export default function LoginForm() {
   };
 
   return (
-    <Card className="w-full max-w-md border-gray-200/80 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl">
+    <Card className="w-full max-w-md border-edge-default shadow-card-xl bg-surface-raised rounded-2xl">
       <CardHeader className="space-y-2 text-center pt-8 px-8">
-        <CardTitle className="font-heading font-extrabold text-2xl text-[#0b192c]">
+        <CardTitle className="font-heading font-extrabold text-2xl text-ink-primary">
           Welcome Back
         </CardTitle>
-        <CardDescription className="text-gray-500 text-xs sm:text-sm">
+        <CardDescription className="text-ink-secondary text-xs sm:text-sm">
           Enter your email and password to access your PaintCMS dashboard.
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="px-8 pb-6">
+      <CardContent className="px-8 pb-6 text-left">
         {/* Status Messages */}
         {errorMsg && (
           <div className="mb-4 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 p-3 rounded-xl text-xs sm:text-sm">
@@ -105,7 +105,7 @@ export default function LoginForm() {
         )}
 
         {successMsg && (
-          <div className="mb-4 flex items-start gap-2.5 bg-emerald-55 border border-emerald-200 text-emerald-700 p-3 rounded-xl text-xs sm:text-sm">
+          <div className="mb-4 flex items-start gap-2.5 bg-emerald-50 border border-emerald-250 text-emerald-700 p-3 rounded-xl text-xs sm:text-sm">
             <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />
             <span>{successMsg}</span>
           </div>
@@ -113,7 +113,7 @@ export default function LoginForm() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="email">
+            <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="email">
               Email Address
             </label>
             <Input
@@ -123,7 +123,7 @@ export default function LoginForm() {
               disabled={loading || googleLoading}
               {...register("email")}
               className={`bg-white border ${
-                errors.email ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.email ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.email && (
@@ -133,10 +133,10 @@ export default function LoginForm() {
 
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider block" htmlFor="password">
+              <label className="text-xs font-bold text-ink-secondary uppercase tracking-wider block" htmlFor="password">
                 Password
               </label>
-              <Link href="#" className="text-xs font-semibold text-[#008dda] hover:text-[#0077b6]">
+              <Link href="#" className="text-xs font-semibold text-brand-600 hover:text-brand-700">
                 Forgot password?
               </Link>
             </div>
@@ -147,7 +147,7 @@ export default function LoginForm() {
               disabled={loading || googleLoading}
               {...register("password")}
               className={`bg-white border ${
-                errors.password ? "border-red-500 focus:ring-red-500/30" : "border-gray-200 focus:border-[#008dda]"
+                errors.password ? "border-red-500 focus:ring-red-500/30" : "border-edge-default focus:border-brand-600"
               } h-11 rounded-xl text-sm`}
             />
             {errors.password && (
@@ -158,7 +158,7 @@ export default function LoginForm() {
           <Button
             type="submit"
             disabled={loading || googleLoading}
-            className="w-full bg-[#008dda] hover:bg-[#0077b6] text-white font-bold h-11 rounded-xl border-0 shadow-lg shadow-[#008dda]/20 gap-2 mt-2"
+            className="w-full btn btn-primary btn-md rounded-xl mt-2"
           >
             {loading ? (
               <>
@@ -172,9 +172,9 @@ export default function LoginForm() {
 
         <div className="relative my-6 text-center">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200" />
+            <div className="w-full border-t border-edge-default" />
           </div>
-          <span className="relative bg-white px-3.5 text-xs text-gray-400 font-semibold uppercase tracking-wider">
+          <span className="relative bg-surface-raised px-3.5 text-xs text-ink-tertiary font-semibold uppercase tracking-wider">
             Or continue with
           </span>
         </div>
@@ -185,7 +185,7 @@ export default function LoginForm() {
           onClick={handleGoogleSignIn}
           disabled={loading || googleLoading}
           variant="outline"
-          className="w-full h-11 rounded-xl border-gray-200 text-gray-700 font-bold hover:bg-gray-50 gap-2.5"
+          className="w-full btn btn-secondary btn-md rounded-xl text-ink-secondary hover:bg-neutral-50 gap-2.5"
         >
           {googleLoading ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -201,9 +201,9 @@ export default function LoginForm() {
         </Button>
       </CardContent>
 
-      <CardFooter className="px-8 pb-8 pt-0 flex justify-center text-xs sm:text-sm text-gray-500">
+      <CardFooter className="px-8 pb-8 pt-0 flex justify-center text-xs sm:text-sm text-ink-secondary">
         New to PaintCMS?{" "}
-        <Link href="/signup" className="text-[#008dda] font-bold hover:text-[#0077b6] ml-1">
+        <Link href="/signup" className="text-brand-600 font-bold hover:text-brand-700 ml-1">
           Create a free account
         </Link>
       </CardFooter>
