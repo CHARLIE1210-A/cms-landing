@@ -1,12 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Play, TrendingUp, Users, Wallet, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { heroHeadline, heroSub, heroCTA, heroImage } from "@/lib/animations";
+import { createClient } from "@/lib/supabase/client";
 
 export default function Hero() {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+  }, []);
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden hero-bg">
       {/* Editorial Noise background is loaded on body; mesh background is on .hero-bg */}
@@ -60,11 +70,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <Button
-              render={<Link href="/signup" />}
+              render={<Link href={user ? "/dashboard" : "/signup"} />}
               size="lg"
               className="btn btn-primary btn-lg rounded-full"
             >
-              Start Free — No Credit Card
+              {user ? "Go to Dashboard" : "Start Free — No Credit Card"}
             </Button>
             <Button
               render={<a href="#how-it-works" />}

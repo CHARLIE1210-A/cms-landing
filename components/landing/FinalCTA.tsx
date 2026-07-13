@@ -1,14 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { createClient } from "@/lib/supabase/client";
 
 export default function FinalCTA() {
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState<any>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,22 +56,33 @@ export default function FinalCTA() {
             </p>
 
             {/* Input Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
-              <Input
-                type="email"
-                placeholder="Enter your email address"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/5 border-white/10 text-white placeholder-brand-300 focus:border-brand-500 focus:ring-brand-500/30 h-12 rounded-full px-6"
-              />
-              <Button
-                type="submit"
-                className="bg-white hover:bg-neutral-100 text-brand-950 font-bold h-12 px-6 rounded-full border-0 shadow-card gap-2 shrink-0 transition-transform active:scale-95 text-xs uppercase tracking-wider"
-              >
-                Get Started <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </form>
+            {user ? (
+              <div className="flex justify-center pt-2">
+                <Button
+                  render={<Link href="/dashboard" />}
+                  className="bg-white hover:bg-neutral-100 text-brand-950 font-bold h-12 px-8 rounded-full border-0 shadow-card gap-2 transition-transform active:scale-95 text-xs uppercase tracking-wider cursor-pointer"
+                >
+                  Go to Dashboard <ArrowRight className="w-3.5 h-3.5" />
+                </Button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-white/5 border-white/10 text-white placeholder-brand-300 focus:border-brand-500 focus:ring-brand-500/30 h-12 rounded-full px-6"
+                />
+                <Button
+                  type="submit"
+                  className="bg-white hover:bg-neutral-100 text-brand-950 font-bold h-12 px-6 rounded-full border-0 shadow-card gap-2 shrink-0 transition-transform active:scale-95 text-xs uppercase tracking-wider cursor-pointer"
+                >
+                  Get Started <ArrowRight className="w-3.5 h-3.5" />
+                </Button>
+              </form>
+            )}
 
             {/* Security checklist */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-brand-300 pt-4 font-semibold uppercase tracking-wider">

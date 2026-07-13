@@ -18,7 +18,9 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabaseClient";
+import { createClient } from "@/lib/supabase/client";
+
+const supabase = createClient();
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -66,7 +68,7 @@ export function LoginForm({
 
       setSuccessMsg("Logged in successfully! Redirecting...");
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard");
       }, 1500);
     } catch (err: any) {
       setErrorMsg(err.message || "Something went wrong. Please check your credentials.");
