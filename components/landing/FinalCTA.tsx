@@ -60,6 +60,7 @@ export default function FinalCTA() {
               <div className="flex justify-center pt-2">
                 <Button
                   render={<Link href="/dashboard" />}
+                  nativeButton={false}
                   className="bg-white hover:bg-neutral-100 text-brand-950 font-bold h-12 px-8 rounded-full border-0 shadow-card gap-2 transition-transform active:scale-95 text-xs uppercase tracking-wider cursor-pointer"
                 >
                   Go to Dashboard <ArrowRight className="w-3.5 h-3.5" />

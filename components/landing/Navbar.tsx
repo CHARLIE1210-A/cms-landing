@@ -110,6 +110,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-3">
                   <Button
                     render={<Link href="/dashboard" />}
+                    nativeButton={false}
                     className="btn btn-primary btn-sm rounded-full"
                   >
                     Go to Dashboard <ArrowRight className="w-3.5 h-3.5" />
@@ -122,10 +123,10 @@ export default function Navbar() {
                       </button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56 bg-white border border-edge-default rounded-xl p-1 shadow-md">
-                      <DropdownMenuLabel className="px-2.5 py-2 text-xs font-bold text-ink-primary block">
+                      <div className="px-2.5 py-2 text-xs font-bold text-ink-primary block">
                         <span className="block font-semibold truncate text-[10px] text-ink-secondary uppercase tracking-wider">Account</span>
                         <span className="block truncate text-xs text-ink-primary">{user.email}</span>
-                      </DropdownMenuLabel>
+                      </div>
                       <DropdownMenuSeparator className="bg-edge-default my-1 h-px" />
                       <DropdownMenuItem asChild>
                         <Link href="/dashboard" className="flex items-center gap-2 px-2.5 py-2 text-xs font-medium text-ink-secondary hover:text-ink-primary hover:bg-muted/40 rounded-lg cursor-pointer transition-colors outline-none">
@@ -157,6 +158,7 @@ export default function Navbar() {
                   </Link>
                   <Button
                     render={<Link href="/signup" />}
+                    nativeButton={false}
                     className="btn btn-primary btn-sm rounded-full"
                   >
                     Start Free Trial <ArrowRight className="w-3.5 h-3.5" />
@@ -215,6 +217,7 @@ export default function Navbar() {
                     </div>
                     <Button
                       render={<Link href="/dashboard" />}
+                      nativeButton={false}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-full btn btn-primary btn-md rounded-xl flex items-center justify-center gap-2"
                     >
@@ -238,6 +241,7 @@ export default function Navbar() {
                     </Link>
                     <Button
                       render={<Link href="/signup" />}
+                      nativeButton={false}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="w-full btn btn-primary btn-md rounded-xl"
                     >

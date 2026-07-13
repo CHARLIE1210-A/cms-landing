@@ -71,6 +71,7 @@ export default function Hero() {
           >
             <Button
               render={<Link href={user ? "/dashboard" : "/signup"} />}
+              nativeButton={false}
               size="lg"
               className="btn btn-primary btn-lg rounded-full"
             >
@@ -78,6 +79,7 @@ export default function Hero() {
             </Button>
             <Button
               render={<a href="#how-it-works" />}
+              nativeButton={false}
               variant="outline"
               size="lg"
               className="btn btn-secondary btn-lg rounded-full gap-2.5"
