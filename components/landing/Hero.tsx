@@ -1,203 +1,251 @@
 "use client";
 
 import Link from "next/link";
-import { Play, ShieldAlert, CheckCircle2, TrendingUp, Users, Wallet } from "lucide-react";
+import { Play, TrendingUp, Users, Wallet, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-br from-[#0b192c] via-[#0f243d] to-[#122e4f]">
-      {/* Background Floating Animated Shapes */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
-        <motion.div
-          animate={{
-            x: [0, 40, -20, 0],
-            y: [0, -50, 30, 0],
-            rotate: [0, 90, 180, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-gradient-to-r from-[#008dda]/30 to-purple-500/10 blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -30, 20, 0],
-            y: [0, 40, -40, 0],
-            rotate: [0, -120, 240, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full bg-gradient-to-r from-emerald-500/20 to-[#008dda]/20 blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, -20, 0],
-            scale: [1, 1.1, 0.9, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-blue-500/10 blur-2xl"
-        />
+    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-[#030712]">
+      {/* Premium Gradient Grid Background */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-70" />
+      
+      {/* Decorative Radial Glowing Accents */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#38bdf8]/15 to-purple-500/5 blur-3xl opacity-60" />
+        <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] rounded-full bg-[#38bdf8]/5 blur-3xl opacity-40" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Heading and Copy */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
+        <div className="flex flex-col items-center space-y-8">
+          
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-7 text-left space-y-6"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-300 uppercase tracking-widest shadow-xl backdrop-blur-md"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#008dda]/10 border border-[#008dda]/30 text-xs font-semibold text-[#33a7e2] uppercase tracking-wider">
-              🇮🇳 Made for Indian Painting Contractors
-            </div>
-            
-            <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-tight">
-              Run every site. <br />
-              <span className="text-[#008dda]">Pay every worker.</span> <br />
+            <span className="flex h-2 w-2 rounded-full bg-[#38bdf8] animate-pulse" />
+            🇮🇳 India's #1 Painting Contractor Software
+          </motion.div>
+          
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-heading font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter text-white leading-[1.05] max-w-5xl mx-auto"
+          >
+            Run every site. <br />
+            Pay every worker. <br />
+            <span className="bg-gradient-to-r from-[#38bdf8] via-[#0ea5e9] to-[#7dd3fc] bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(56,189,248,0.2)]">
               Know every rupee.
-            </h1>
-            
-            <p className="text-lg text-gray-300 max-w-2xl leading-relaxed">
-              No more <span className="text-[#33a7e2] font-semibold italic">jugaad</span> on paper or messy WhatsApp groups. The ultimate simple dashboard built specifically for painters to track attendance, handle daily wage advances, and secure site profits.
-            </p>
+            </span>
+          </motion.h1>
+          
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl leading-relaxed font-medium"
+          >
+            No more <span className="text-[#38bdf8] font-bold italic">jugaad</span> on paper registers or messy WhatsApp logs. Manage multiple sites, mark worker attendance, track cash advances, and secure profits from one professional dashboard.
+          </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button
-                render={<Link href="/signup" />}
-                size="lg"
-                className="bg-[#008dda] hover:bg-[#0077b6] text-white font-bold px-8 py-4 rounded-xl border-0 shadow-lg shadow-[#008dda]/30 text-base"
-              >
-                Start Free — No Credit Card
-              </Button>
-              <Button
-                render={<a href="#how-it-works" />}
-                variant="outline"
-                size="lg"
-                className="bg-transparent border-[#2c476f] text-white hover:bg-white/5 hover:text-white px-8 py-4 rounded-xl text-base gap-2"
-              >
-                <Play className="w-4 h-4 fill-white" /> Watch Demo
-              </Button>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          >
+            <Button
+              render={<Link href="/signup" />}
+              size="lg"
+              className="bg-white hover:bg-gray-100 text-[#030712] font-bold text-xs uppercase tracking-wider px-8 py-5 rounded-full border-0 shadow-xl hover:shadow-[#38bdf8]/20 transition-all duration-300"
+            >
+              Start Free — No Credit Card
+            </Button>
+            <Button
+              render={<a href="#how-it-works" />}
+              variant="outline"
+              size="lg"
+              className="bg-white/5 border-white/10 text-white hover:bg-white/10 px-8 py-5 rounded-full text-xs uppercase tracking-wider gap-2.5 transition-colors"
+            >
+              <Play className="w-3.5 h-3.5 fill-white" /> Watch Demo
+            </Button>
+          </motion.div>
+
+          {/* Features check list */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-4 text-xs font-semibold uppercase tracking-wider text-gray-500"
+          >
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#38bdf8]" />
+              <span>14-day free trial</span>
             </div>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>14-day free trial</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Unlimited sites</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Works offline / SMS sync</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#38bdf8]" />
+              <span>Unlimited sites</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#38bdf8]" />
+              <span>SMS & WhatsApp sync</span>
             </div>
           </motion.div>
 
-          {/* Right Column: Premium Dashboard Preview */}
+          {/* 3D Perspective Dashboard Preview */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-5 w-full"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
+            className="w-full max-w-5xl pt-12 relative [perspective:1200px]"
           >
-            <div className="relative mx-auto max-w-[480px] lg:max-w-none bg-[#0b192c]/85 border border-[#2c476f]/55 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop-blur-md">
-              {/* Glass Header Mockup */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#2c476f]/30">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-red-500" />
-                  <span className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500" />
-                  <span className="ml-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">PaintCMS Live Dashboard</span>
-                </div>
-                <span className="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                  ₹ Live Profit
-                </span>
-              </div>
-
-              {/* Grid Widgets */}
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                {/* Widget 1 */}
-                <div className="bg-[#1a2f4c]/50 border border-[#2c476f]/30 p-3 sm:p-4 rounded-xl">
-                  <div className="flex items-center gap-2 text-gray-400 text-xs sm:text-sm">
-                    <Users className="w-4 h-4 text-[#008dda]" />
-                    <span>Attendance Today</span>
-                  </div>
-                  <div className="mt-2 flex items-baseline gap-2">
-                    <span className="text-xl sm:text-2xl font-bold text-white">28</span>
-                    <span className="text-xs text-emerald-400 font-semibold">100% Present</span>
+            <motion.div
+              style={{
+                transform: "rotateX(10deg) rotateY(-4deg) rotateZ(1deg)",
+                transformStyle: "preserve-3d",
+              }}
+              whileHover={{
+                transform: "rotateX(5deg) rotateY(-2deg) rotateZ(0deg)",
+                transition: { duration: 0.4, ease: "easeOut" },
+              }}
+              className="relative mx-auto bg-[#0b1528]/90 border border-white/10 rounded-2xl p-4 sm:p-6 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+            >
+              {/* Dashboard Layout Header */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-white/5 text-left">
+                <div className="flex items-center gap-3">
+                  <span className="w-3.5 h-3.5 rounded-full bg-red-500/80 shrink-0" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-yellow-500/80 shrink-0" />
+                  <span className="w-3.5 h-3.5 rounded-full bg-emerald-500/80 shrink-0" />
+                  <div className="ml-2">
+                    <h3 className="text-sm font-extrabold text-white">Lal Paint Works Dashboard</h3>
+                    <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Site ID: #LPW-DEL-89</p>
                   </div>
                 </div>
-
-                {/* Widget 2 */}
-                <div className="bg-[#1a2f4c]/50 border border-[#2c476f]/30 p-3 sm:p-4 rounded-xl">
-                  <div className="flex items-center gap-2 text-gray-400 text-xs sm:text-sm">
-                    <Wallet className="w-4 h-4 text-[#008dda]" />
-                    <span>Today's Advances</span>
-                  </div>
-                  <div className="mt-2 flex items-baseline gap-2">
-                    <span className="text-xl sm:text-2xl font-bold text-white">₹7,200</span>
-                    <span className="text-xs text-amber-400 font-semibold">Pending Approval</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Site Profit Widget */}
-              <div className="bg-[#1a2f4c]/50 border border-[#2c476f]/30 p-4 rounded-xl mt-4">
-                <div className="flex items-center justify-between text-xs sm:text-sm text-gray-300 font-semibold mb-2">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-emerald-400" />
-                    <span>DLF Phase 3 Villa — Profitability</span>
-                  </div>
-                  <span className="text-emerald-400 font-bold">38.4% Margin</span>
-                </div>
-                <div className="w-full bg-[#0b192c] h-2 rounded-full overflow-hidden">
-                  <div className="bg-emerald-500 h-full w-[38.4%]" />
-                </div>
-                <div className="flex justify-between text-[11px] text-gray-400 mt-2">
-                  <span>Expenses: ₹1,45,000</span>
-                  <span>Received: ₹2,35,000</span>
-                </div>
-              </div>
-
-              {/* Workers List / Real-time Attendance Tracker */}
-              <div className="bg-[#1a2f4c]/30 border border-[#2c476f]/20 rounded-xl p-3 sm:p-4 mt-4 space-y-2.5">
-                <span className="text-xs font-semibold text-gray-400 block mb-1">Recent Attendance Logs</span>
                 
-                {/* Worker Item 1 */}
-                <div className="flex items-center justify-between bg-[#1a2f4c]/60 p-2.5 rounded-lg border border-[#2c476f]/20">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-[#008dda]/20 text-[#008dda] font-bold text-xs flex items-center justify-center border border-[#008dda]/30">
-                      RK
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">Rajesh Kumar</h4>
-                      <p className="text-[10px] text-gray-400">DLF Phase 3 Site • Painter</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                    Present
-                  </span>
-                </div>
-
-                {/* Worker Item 2 */}
-                <div className="flex items-center justify-between bg-[#1a2f4c]/60 p-2.5 rounded-lg border border-[#2c476f]/20">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">
-                      AS
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white">Amit Sharma</h4>
-                      <p className="text-[10px] text-gray-400">Gurugram Highrise • Helper</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-semibold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                    Advance ₹500
-                  </span>
+                {/* Active site tag */}
+                <div className="flex items-center gap-3 text-xs bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20 px-3.5 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  DLF Villa Phase 3 — Active
                 </div>
               </div>
-            </div>
+
+              {/* Grid Layout Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 text-left">
+                {/* Stat Card 1 */}
+                <div className="bg-[#13243c]/40 border border-white/5 rounded-xl p-5 shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Attendance Status</span>
+                    <Users className="w-4 h-4 text-[#38bdf8]" />
+                  </div>
+                  <div className="mt-4 flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-white">24 / 28</span>
+                    <span className="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Present</span>
+                  </div>
+                  <div className="mt-3 w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                    <div className="bg-emerald-400 h-full w-[85.7%]" />
+                  </div>
+                </div>
+
+                {/* Stat Card 2 */}
+                <div className="bg-[#13243c]/40 border border-white/5 rounded-xl p-5 shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Wage Advances Today</span>
+                    <Wallet className="w-4 h-4 text-[#38bdf8]" />
+                  </div>
+                  <div className="mt-4 flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-white">₹8,500</span>
+                    <span className="text-xs text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded">Pending Settle</span>
+                  </div>
+                  <div className="mt-3 flex items-center gap-1.5 text-[11px] text-gray-400 font-semibold">
+                    <span>Last deduction: ₹1,200 yesterday</span>
+                  </div>
+                </div>
+
+                {/* Stat Card 3 */}
+                <div className="bg-[#13243c]/40 border border-white/5 rounded-xl p-5 shadow-inner">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Project Profitability</span>
+                    <TrendingUp className="w-4 h-4 text-emerald-400" />
+                  </div>
+                  <div className="mt-4 flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-emerald-400">38.4%</span>
+                    <span className="text-[10px] text-gray-400 font-medium">Billed: ₹2,35,000</span>
+                  </div>
+                  <div className="mt-3 flex justify-between items-center text-[10px] text-gray-400 font-bold uppercase">
+                    <span>Expenses: ₹1,45,000</span>
+                    <span className="text-emerald-400">Target: 35%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom mockup layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+                
+                {/* SVG Graph block */}
+                <div className="lg:col-span-8 bg-[#13243c]/30 border border-white/5 rounded-xl p-5 text-left">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="text-xs font-extrabold text-white uppercase tracking-wider">Cumulative Expenses vs Budget</h4>
+                    <span className="text-[11px] text-gray-400">Unit: ₹ Thousands</span>
+                  </div>
+                  <div className="h-44 w-full relative flex items-end">
+                    {/* SVG Line Graph */}
+                    <svg className="w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+                      {/* Budget Line */}
+                      <path d="M0 32 L20 28 L40 24 L60 20 L80 16 L100 12" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="2,2" />
+                      {/* Actual Expense Line */}
+                      <path d="M0 35 L20 31 L40 29 L60 25 L80 20 L100 17" fill="none" stroke="url(#electric-gradient)" strokeWidth="2.5" strokeLinecap="round" />
+                      {/* Gradients */}
+                      <defs>
+                        <linearGradient id="electric-gradient" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0%" stopColor="#38bdf8" />
+                          <stop offset="100%" stopColor="#a855f7" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                    <div className="absolute bottom-0 left-0 right-0 flex justify-between text-[9px] text-gray-500 font-bold uppercase pt-2">
+                      <span>Week 1</span>
+                      <span>Week 2</span>
+                      <span>Week 3</span>
+                      <span>Week 4</span>
+                      <span>Week 5</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Check-in log list */}
+                <div className="lg:col-span-4 bg-[#13243c]/30 border border-white/5 rounded-xl p-5 text-left space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-extrabold text-white uppercase tracking-wider">Active Staff (4)</h4>
+                    <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      { name: "Rajesh Kumar", role: "Painter", status: "Present", color: "bg-emerald-400/20 text-emerald-400 border-emerald-400/25" },
+                      { name: "Amit Sharma", role: "Helper", status: "Present", color: "bg-emerald-400/20 text-emerald-400 border-emerald-400/25" },
+                      { name: "Sanjay Singh", role: "Polisher", status: "Advance ₹800", color: "bg-amber-400/20 text-amber-400 border-amber-400/25" },
+                    ].map((st, i) => (
+                      <div key={i} className="flex justify-between items-center bg-[#0b1528]/70 border border-white/5 p-2.5 rounded-lg">
+                        <div>
+                          <h5 className="text-xs font-bold text-white">{st.name}</h5>
+                          <span className="text-[9px] text-gray-400 uppercase tracking-wider">{st.role}</span>
+                        </div>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${st.color}`}>
+                          {st.status}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

@@ -43,32 +43,31 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-24 bg-white border-b border-gray-200">
+    <section className="py-24 bg-white border-b border-[#e5e4da] relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-xs font-bold text-[#008dda] uppercase tracking-wider">
+          <span className="text-xs font-extrabold text-[#38bdf8] uppercase tracking-widest">
+            F.A.Q.
+          </span>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#0b1528] tracking-tighter leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="font-heading font-extrabold text-3xl sm:text-4xl text-[#0b192c] tracking-tight">
-            Have questions? We've got answers.
-          </p>
         </div>
 
-        {/* Accordion FAQ */}
-        <div className="w-full space-y-4">
+        {/* Minimal Accordion List */}
+        <div className="w-full border-t border-[#e5e4da]">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className={`border rounded-2xl px-6 bg-[#fcfcfc] transition-all duration-300 ${
-                  isOpen ? "border-[#008dda]/50 bg-white shadow-md" : "border-gray-200/80 shadow-sm"
-                }`}
+                className="border-b border-[#e5e4da] bg-white transition-all duration-300"
               >
                 <button
                   onClick={() => toggle(idx)}
-                  className="flex items-center justify-between w-full font-heading font-bold text-left text-sm sm:text-base text-[#0b192c] py-5 focus:outline-none hover:text-[#008dda] transition-colors"
+                  className="flex items-center justify-between w-full font-heading font-bold text-left text-sm sm:text-base text-[#0b1528] py-6 focus:outline-none hover:text-[#38bdf8] transition-colors"
                 >
                   <span>{faq.q}</span>
                   <motion.div
@@ -76,7 +75,7 @@ export default function FAQ() {
                     transition={{ duration: 0.2 }}
                     className="text-gray-400 shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-4 h-4" />
                   </motion.div>
                 </button>
                 
@@ -86,10 +85,10 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="text-gray-600 text-xs sm:text-sm leading-relaxed pb-5 pt-1 border-t border-gray-100">
+                      <div className="text-gray-600 text-xs sm:text-sm leading-relaxed pb-6 pt-1 text-left">
                         {faq.a}
                       </div>
                     </motion.div>

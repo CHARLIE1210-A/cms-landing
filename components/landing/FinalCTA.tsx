@@ -17,29 +17,33 @@ export default function FinalCTA() {
   };
 
   return (
-    <section className="bg-[#F5F7F8] py-20">
+    <section className="bg-[#faf9f6] py-20 border-b border-[#e5e4da]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-[#0b192c] rounded-3xl overflow-hidden py-16 px-8 sm:px-16 shadow-2xl border border-[#2c476f]/30">
-          {/* Background decoration */}
-          <div className="absolute inset-0 z-0 overflow-hidden opacity-30">
-            <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-gradient-to-br from-[#008dda] to-emerald-500 blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-[#008dda] blur-3xl" />
+        
+        <div className="relative bg-[#0b1528] rounded-[2.5rem] overflow-hidden py-20 px-8 sm:px-16 shadow-2xl border border-white/5">
+          {/* Radial Glowing Background */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#38bdf8]/20 to-purple-500/5 blur-3xl" />
           </div>
 
           <div className="relative z-10 max-w-3xl mx-auto text-center space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400">
-              <Zap className="w-3.5 h-3.5 fill-emerald-400" /> Join 200+ contractors saving ₹20k+/month
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-[#38bdf8] uppercase tracking-widest">
+              <Zap className="w-3.5 h-3.5 fill-[#38bdf8]" /> Join 200+ contractors saving ₹20k+/month
             </div>
             
-            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+            {/* Title */}
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tighter leading-tight">
               Ready to stop leaking site profits? <br />
-              <span className="text-[#008dda]">Start your free trial today.</span>
+              <span className="text-[#38bdf8]">Start your free trial today.</span>
             </h2>
             
-            <p className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-              No credit card required. Setting up your first site takes less than 30 seconds. No more jugaad — just results.
+            {/* Description */}
+            <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+              Set up your first painting site in under 30 seconds. No credit card required. No more jugaad — just results.
             </p>
 
+            {/* Input Form */}
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
               <Input
                 type="email"
@@ -47,30 +51,32 @@ export default function FinalCTA() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-[#1a2f4c]/60 border-[#2c476f]/55 text-white placeholder-gray-400 focus:border-[#008dda] focus:ring-[#008dda]/45 h-12 rounded-xl"
+                className="bg-white/5 border-white/10 text-white placeholder-gray-500 focus:border-[#38bdf8] focus:ring-[#38bdf8]/30 h-12 rounded-full px-6"
               />
               <Button
                 type="submit"
-                className="bg-[#008dda] hover:bg-[#0077b6] text-white font-bold h-12 px-6 rounded-xl border-0 shadow-lg shadow-[#008dda]/25 gap-2 shrink-0 transition-transform active:scale-95"
+                className="bg-white hover:bg-gray-100 text-[#030712] font-bold h-12 px-6 rounded-full border-0 shadow-lg shadow-white/5 gap-2 shrink-0 transition-transform active:scale-95 text-xs uppercase tracking-wider"
               >
-                Get Started <ArrowRight className="w-4 h-4" />
+                Get Started <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             </form>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-400 pt-4">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            {/* Security checklist */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500 pt-4 font-semibold uppercase tracking-wider">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#38bdf8]" />
                 <span>14-day free trial</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>No credit card required</span>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#38bdf8]" />
+                <span>No credit card</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Cancel online anytime</span>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#38bdf8]" />
+                <span>Cancel anytime</span>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

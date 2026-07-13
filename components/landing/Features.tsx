@@ -4,31 +4,31 @@ import { motion } from "framer-motion";
 import { UserCheck, Users, Coins, Calculator, Ruler, BarChart3, CheckCircle2 } from "lucide-react";
 
 export default function Features() {
-  const featureList = [
+  const features = [
     {
       id: "attendance",
-      icon: <UserCheck className="w-6 h-6 text-[#008dda]" />,
-      headline: "Attendance Tracking in 3 Taps",
-      bullets: [
-        "Mark present, absent, or half-day for all painters in seconds.",
-        "Automatic Sunday calculation and festive leave logs.",
-        "Direct SMS alert sent to workers so there are no disputes at weekend settlement.",
-      ],
+      icon: <UserCheck className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Attendance Logs in 3 Taps",
+      description: "Mark present, absent, or half-day for painters in seconds. Automatic leave logging with direct SMS updates sent to workers to prevent end-of-month disputes.",
+      gridClass: "lg:col-span-8",
       preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4">
-          <div className="flex justify-between items-center pb-2 border-b border-[#2c476f]/20">
-            <span className="text-xs font-semibold text-gray-400">Attendance Log — July 13</span>
-            <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">All marked</span>
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3">
+          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest pb-2 border-b border-white/5">
+            <span>Attendance Logs — Today</span>
+            <span className="text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">All Mark Complete</span>
           </div>
           <div className="space-y-2">
             {[
-              { name: "Rajesh Kumar", status: "Present", color: "bg-emerald-500 text-white" },
-              { name: "Amit Sharma", status: "Half-Day", color: "bg-amber-500 text-white" },
-              { name: "Sanjay Singh", status: "Present", color: "bg-emerald-500 text-white" },
+              { name: "Rajesh Kumar", role: "Master Painter", status: "Present", color: "bg-emerald-500 text-white" },
+              { name: "Amit Sharma", role: "Helper", status: "Half-Day", color: "bg-amber-500 text-[#030712]" },
+              { name: "Sanjay Singh", role: "Polisher", status: "Present", color: "bg-emerald-500 text-white" },
             ].map((w, i) => (
-              <div key={i} className="flex justify-between items-center bg-[#1a2f4c]/40 p-3 rounded-xl border border-[#2c476f]/20">
-                <span className="text-sm font-semibold text-white">{w.name}</span>
-                <span className={`text-xs px-2.5 py-1 rounded-full font-bold ${w.color}`}>{w.status}</span>
+              <div key={i} className="flex justify-between items-center bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
+                <div>
+                  <h5 className="text-xs font-bold text-white">{w.name}</h5>
+                  <span className="text-[9px] text-gray-400 uppercase tracking-wider">{w.role}</span>
+                </div>
+                <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-bold ${w.color}`}>{w.status}</span>
               </div>
             ))}
           </div>
@@ -36,107 +36,64 @@ export default function Features() {
       ),
     },
     {
-      id: "worker-management",
-      icon: <Users className="w-6 h-6 text-[#008dda]" />,
-      headline: "Central Worker Directory",
-      bullets: [
-        "Store contact numbers, bank details, and daily wage rates (₹500 - ₹900/day).",
-        "Group workers by skills: Master Painter, Helper, Wood Polisher, Putty Specialist.",
-        "Track active site assignment history to avoid double-booking workers.",
-      ],
+      id: "payroll",
+      icon: <Coins className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Loose Cash Advance logs",
+      description: "Record mid-week advances on site. Saturday wages are calculated automatically: (Days Worked × Rate) − Advances.",
+      gridClass: "lg:col-span-4",
       preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4">
-          <div className="bg-[#1a2f4c]/50 p-4 rounded-xl border border-[#2c476f]/30">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#008dda]/20 text-[#008dda] flex items-center justify-center font-bold text-sm border border-[#008dda]/30">
-                RK
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white">Rajesh Kumar</h4>
-                <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Master Painter</span>
-              </div>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-4 text-xs">
-              <div className="bg-[#0b192c] p-2.5 rounded-lg border border-[#2c476f]/20">
-                <span className="text-gray-400 block mb-0.5">Daily Wage</span>
-                <span className="font-bold text-white">₹800 / day</span>
-              </div>
-              <div className="bg-[#0b192c] p-2.5 rounded-lg border border-[#2c476f]/20">
-                <span className="text-gray-400 block mb-0.5">Active Site</span>
-                <span className="font-bold text-white">DLF Phase 3</span>
-              </div>
-            </div>
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4">
+          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest border-b border-white/5 pb-2">
+            <span>Rajesh • Week Settlement</span>
+            <span className="text-emerald-400 font-bold">Calculated</span>
           </div>
-        </div>
-      ),
-    },
-    {
-      id: "advances-payroll",
-      icon: <Coins className="w-6 h-6 text-[#008dda]" />,
-      headline: "Smart Advances & Weekly Payroll",
-      bullets: [
-        "Record mid-week cash advances directly on site. No more lost notes.",
-        "Automatic payroll calculation: (Days worked × Wage rate) − Advances taken.",
-        "Generate one-click digital salary slips that can be shared directly on WhatsApp.",
-      ],
-      preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4">
-          <div className="flex justify-between items-center text-xs font-semibold text-gray-400">
-            <span>Weekly Wage Calculation</span>
-            <span>Week: July 06 - July 12</span>
-          </div>
-          <div className="bg-[#1a2f4c]/50 p-4 rounded-xl border border-[#2c476f]/20 space-y-2.5 text-xs text-gray-300">
+          <div className="space-y-2 text-[11px] text-gray-300">
             <div className="flex justify-between">
-              <span>Days Worked (5.5 days @ ₹800)</span>
+              <span>Days Worked (5.5 @ ₹800)</span>
               <span className="text-white font-bold">₹4,400</span>
             </div>
-            <div className="flex justify-between text-amber-400">
-              <span>Less: Cash Advances taken</span>
+            <div className="flex justify-between text-amber-400 font-medium">
+              <span>Less: Cash Advances</span>
               <span className="font-bold">- ₹1,500</span>
             </div>
-            <hr className="border-[#2c476f]/30 my-2" />
-            <div className="flex justify-between text-emerald-400 font-bold text-sm">
-              <span>Final Saturday Payout</span>
+            <hr className="border-white/5 my-2" />
+            <div className="flex justify-between text-emerald-400 font-bold text-xs">
+              <span>Net Saturday Payout</span>
               <span>₹2,900</span>
             </div>
           </div>
-          <div className="text-center">
-            <span className="inline-block text-[10px] text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 font-semibold">
-              ✓ Sent to Rajesh on WhatsApp
-            </span>
-          </div>
+          <span className="block text-[9px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 text-center py-1 rounded-md font-bold uppercase tracking-wider">
+            ✓ Shared on WhatsApp
+          </span>
         </div>
       ),
     },
     {
-      id: "site-finances",
-      icon: <Calculator className="w-6 h-6 text-[#008dda]" />,
-      headline: "Live Site Budgets & Expenses",
-      bullets: [
-        "Track paint buckets purchased, brush supplies, transport, and tea/lunch costs.",
-        "Compare actual material expenses against your initial budget dynamically.",
-        "Instantly know if a site is running profitable or crossing cost limits.",
-      ],
+      id: "finances",
+      icon: <Calculator className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Live Expenses",
+      description: "Log paint cans purchased, brush supplies, transport, and chai/snacks on the spot. Match costs against budget.",
+      gridClass: "lg:col-span-4",
       preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4">
-          <span className="text-xs font-semibold text-gray-400 block">Delhi Villa Site Finances</span>
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4">
+          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block pb-2 border-b border-white/5">Noida Office — Budget Status</span>
           <div className="space-y-3">
             <div>
-              <div className="flex justify-between text-xs text-gray-300 mb-1">
-                <span>Material Cost (Budget: ₹60,000)</span>
+              <div className="flex justify-between text-[11px] text-gray-300 mb-1 font-semibold">
+                <span>Material Cost (Max ₹60k)</span>
                 <span className="text-white font-bold">₹54,500</span>
               </div>
-              <div className="w-full bg-[#1a2f4c] h-1.5 rounded-full overflow-hidden">
-                <div className="bg-[#008dda] h-full w-[90%]" />
+              <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                <div className="bg-[#38bdf8] h-full w-[90.8%]" />
               </div>
             </div>
             <div>
-              <div className="flex justify-between text-xs text-gray-300 mb-1">
-                <span>Labor Wages (Budget: ₹80,000)</span>
+              <div className="flex justify-between text-[11px] text-gray-300 mb-1 font-semibold">
+                <span>Wages Paid (Max ₹80k)</span>
                 <span className="text-white font-bold">₹62,000</span>
               </div>
-              <div className="w-full bg-[#1a2f4c] h-1.5 rounded-full overflow-hidden">
-                <div className="bg-emerald-500 h-full w-[77.5%]" />
+              <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
+                <div className="bg-emerald-400 h-full w-[77.5%]" />
               </div>
             </div>
           </div>
@@ -144,38 +101,38 @@ export default function Features() {
       ),
     },
     {
-      id: "estimate-calculator",
-      icon: <Ruler className="w-6 h-6 text-[#008dda]" />,
-      headline: "Quick Estimate & Quotation Tool",
-      bullets: [
-        "Enter carpet area (sq ft) to instantly calculate paint quantities required.",
-        "Add quotes for primers, putty, emulsion coats, and labor wages in seconds.",
-        "Download professional PDF quotes with your company logo to win clients.",
-      ],
+      id: "calculator",
+      icon: <Ruler className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Paint Estimate & Quotation Builder",
+      description: "Input wall measurements to instantly calculate required paint volumes. Generate detailed client quotations with primers, putty layers, and labor wages to win deals quickly.",
+      gridClass: "lg:col-span-8",
       preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4 text-xs">
-          <span className="font-semibold text-gray-400 block">Area-Based Paint Estimator</span>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-[#1a2f4c]/50 p-2.5 rounded-lg border border-[#2c476f]/20">
-              <span className="text-gray-400 block mb-0.5">Total Wall Area</span>
-              <span className="font-bold text-white">3,200 sq ft</span>
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-4 text-left">
+          <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest pb-2 border-b border-white/5">
+            <span>Wall Calculator</span>
+            <span className="text-[#38bdf8]">Automatic Estimate</span>
+          </div>
+          <div className="grid grid-cols-2 gap-4 text-[11px]">
+            <div className="bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
+              <span className="text-gray-400 block mb-0.5 font-semibold">Total Area</span>
+              <span className="font-extrabold text-white text-sm">3,200 sq ft</span>
             </div>
-            <div className="bg-[#1a2f4c]/50 p-2.5 rounded-lg border border-[#2c476f]/20">
-              <span className="text-gray-400 block mb-0.5">Coats Planned</span>
-              <span className="font-bold text-white">2 Putty + 2 Paint</span>
+            <div className="bg-[#13243c]/50 p-2.5 rounded-lg border border-white/5">
+              <span className="text-gray-400 block mb-0.5 font-semibold">Coat Setup</span>
+              <span className="font-extrabold text-white text-sm">2 Putty + 2 Paint</span>
             </div>
           </div>
-          <div className="bg-[#1a2f4c]/30 p-3 rounded-lg border border-[#2c476f]/10 text-[11px] space-y-2">
+          <div className="bg-[#13243c]/20 p-3 rounded-lg border border-white/5 text-[10px] space-y-2 font-semibold">
             <div className="flex justify-between text-gray-300">
-              <span>Required Putty</span>
-              <span className="text-white font-bold">14 Bags (40kg)</span>
+              <span>Estimated Putty</span>
+              <span className="text-white">14 Bags (40kg)</span>
             </div>
             <div className="flex justify-between text-gray-300">
-              <span>Required Paint</span>
-              <span className="text-white font-bold">58 Liters</span>
+              <span>Estimated Emulsion</span>
+              <span className="text-white">58 Liters</span>
             </div>
-            <div className="flex justify-between text-emerald-400 font-semibold pt-1 border-t border-[#2c476f]/20">
-              <span>Estimated Cost</span>
+            <div className="flex justify-between text-[#38bdf8] pt-1.5 border-t border-white/5 font-extrabold text-xs">
+              <span>Total Material Estimate</span>
               <span>₹42,500</span>
             </div>
           </div>
@@ -183,31 +140,53 @@ export default function Features() {
       ),
     },
     {
-      id: "dashboard-analytics",
-      icon: <BarChart3 className="w-6 h-6 text-[#008dda]" />,
-      headline: "Owner's Executive Analytics",
-      bullets: [
-        "Consolidated single-view dashboard showing metrics across all active painting sites.",
-        "Automatic month-on-month profit tracker to identify leaks.",
-        "Top painter leaderboards showing who works most efficiently.",
-      ],
+      id: "directory",
+      icon: <Users className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Skills & Wage Directory",
+      description: "Register worker details and daily wage rates. Avoid double-booking painters across sites.",
+      gridClass: "lg:col-span-4",
       preview: (
-        <div className="bg-[#0b192c] rounded-2xl p-6 border border-[#2c476f]/30 shadow-xl space-y-4">
-          <span className="text-xs font-semibold text-gray-400 block">Site Profit Summary (INR)</span>
-          <div className="space-y-2.5">
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3 text-left">
+          <div className="flex items-center gap-3 bg-[#13243c]/40 p-3 rounded-xl border border-white/5">
+            <div className="w-9 h-9 rounded-full bg-[#38bdf8]/10 text-[#38bdf8] flex items-center justify-center font-bold text-xs border border-[#38bdf8]/20">
+              AS
+            </div>
+            <div>
+              <h5 className="text-xs font-bold text-white">Amit Sharma</h5>
+              <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Helper</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 text-[10px]">
+            <div className="bg-[#030712] p-2 rounded-lg border border-white/5">
+              <span className="text-gray-500 block mb-0.5 font-bold uppercase tracking-wider">Rate</span>
+              <span className="font-extrabold text-white">₹600/day</span>
+            </div>
+            <div className="bg-[#030712] p-2 rounded-lg border border-white/5">
+              <span className="text-gray-500 block mb-0.5 font-bold uppercase tracking-wider">Active</span>
+              <span className="font-extrabold text-white">Gurugram</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: "analytics",
+      icon: <BarChart3 className="w-5 h-5 text-[#38bdf8]" />,
+      headline: "Consolidated Site Profits",
+      description: "A centralized dashboard summarizing expenses, material payouts, and margins across all active projects.",
+      gridClass: "lg:col-span-4",
+      preview: (
+        <div className="bg-[#0b1528] rounded-xl p-5 border border-white/5 shadow-premium space-y-3 text-left">
+          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block pb-2 border-b border-white/5">Site Margin Leaderboard</span>
+          <div className="space-y-2">
             {[
-              { site: "DLF Villa 3", profit: "₹85,000", pct: 75, color: "bg-emerald-500" },
-              { site: "Gurgaon Flat 1", profit: "₹42,000", pct: 45, color: "bg-emerald-500" },
-              { site: "Noida Office 4", profit: "- ₹12,000", pct: 15, color: "bg-red-500" },
+              { site: "DLF Phase 3", margin: "38%", color: "bg-emerald-400" },
+              { site: "Nirvana Flat", margin: "24%", color: "bg-emerald-400" },
+              { site: "Omaxe Flat", margin: "-12%", color: "bg-red-400" },
             ].map((s, i) => (
-              <div key={i} className="space-y-1">
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-white font-semibold">{s.site}</span>
-                  <span className={s.color === "bg-red-500" ? "text-red-400 font-bold" : "text-emerald-400 font-bold"}>{s.profit}</span>
-                </div>
-                <div className="w-full bg-[#1a2f4c] h-1.5 rounded-full overflow-hidden">
-                  <div className={`h-full ${s.color} w-[${s.pct}%]`} style={{ width: `${s.pct}%` }} />
-                </div>
+              <div key={i} className="flex justify-between items-center text-[11px] bg-[#13243c]/20 p-2 rounded-lg">
+                <span className="text-gray-300 font-semibold">{s.site}</span>
+                <span className={s.color === "bg-red-400" ? "text-red-400 font-extrabold" : "text-emerald-400 font-extrabold"}>{s.margin} Margin</span>
               </div>
             ))}
           </div>
@@ -217,67 +196,50 @@ export default function Features() {
   ];
 
   return (
-    <section id="features" className="py-24 bg-white border-b border-gray-200">
+    <section id="features" className="py-24 bg-white border-b border-[#e5e4da] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <h2 className="text-xs font-bold text-[#008dda] uppercase tracking-wider">
-            Powerful Features
+          <span className="text-xs font-extrabold text-[#38bdf8] uppercase tracking-widest">
+            Executive Controls
+          </span>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0b1528] tracking-tighter leading-tight">
+            Stop guessing your cashflow. Run your business like a corporate firm.
           </h2>
-          <p className="font-heading font-extrabold text-3xl sm:text-4xl text-[#0b192c] tracking-tight">
-            Stop relying on paper diaries. Run your business like a pro.
-          </p>
         </div>
 
-        {/* Alternating Feature Layout */}
-        <div className="space-y-24">
-          {featureList.map((feat, idx) => {
-            const isEven = idx % 2 === 0;
-            return (
-              <div
-                key={feat.id}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
-              >
-                {/* Image/Mockup Column */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                  className={`lg:col-span-6 w-full ${!isEven ? "lg:order-last" : ""}`}
-                >
-                  {feat.preview}
-                </motion.div>
-
-                {/* Copy Column */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="lg:col-span-6 space-y-6 text-left"
-                >
-                  <div className="inline-flex items-center justify-center p-3 rounded-xl bg-[#eef8ff] text-[#008dda]">
-                    {feat.icon}
-                  </div>
-                  <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#0b192c] leading-tight">
-                    {feat.headline}
-                  </h3>
-                  <ul className="space-y-3.5">
-                    {feat.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
-                        <span className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                          {bullet}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {features.map((feat, idx) => (
+            <motion.div
+              key={feat.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className={`bg-[#faf9f6]/60 border border-[#e5e4da]/75 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-premium hover:border-[#38bdf8]/40 transition-all duration-300 group ${feat.gridClass}`}
+            >
+              <div className="space-y-4 text-left">
+                <div className="inline-flex items-center justify-center p-3 rounded-xl bg-white border border-[#e5e4da]/60 text-[#38bdf8] shadow-sm group-hover:scale-105 transition-transform duration-300">
+                  {feat.icon}
+                </div>
+                <h3 className="font-heading font-extrabold text-xl text-[#0b1528] leading-tight">
+                  {feat.headline}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
+                  {feat.description}
+                </p>
               </div>
-            );
-          })}
+
+              {/* Graphic Preview */}
+              <div className="mt-8 pt-4 w-full">
+                {feat.preview}
+              </div>
+            </motion.div>
+          ))}
         </div>
+        
       </div>
     </section>
   );
