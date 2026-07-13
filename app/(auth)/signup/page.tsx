@@ -1,15 +1,11 @@
-import SignupForm from "@/components/auth/SignupForm";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Start Free Trial | PaintCMS",
-  description: "Create your PaintCMS account and start tracking your painting sites in 30 seconds.",
-};
+import { SignupForm } from "@/components/signup-form"
 
 export default function SignupPage() {
   return (
-    <>
-      <SignupForm />
-    </>
-  );
+    <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-4xl">
+        <SignupForm />
+      </div>
+    </div>
+  )
 }

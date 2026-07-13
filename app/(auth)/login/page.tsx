@@ -1,15 +1,11 @@
-import LoginForm from "@/components/auth/LoginForm";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Login | PaintCMS",
-  description: "Sign in to your PaintCMS account to manage your sites, workers, and profitability.",
-};
+import { LoginForm } from "@/components/login-form"
 
 export default function LoginPage() {
   return (
-    <>
-      <LoginForm />
-    </>
-  );
+    <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
+      <div className="w-full max-w-sm md:max-w-4xl">
+        <LoginForm />
+      </div>
+    </div>
+  )
 }
