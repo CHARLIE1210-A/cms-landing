@@ -117,10 +117,8 @@ export default function Navbar() {
                   </Button>
                   
                   <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-brand-600 to-brand-500 text-white font-bold text-xs ring-2 ring-brand-100 hover:ring-brand-200 transition-all cursor-pointer outline-none">
-                        {getInitials(user.email)}
-                      </button>
+                    <DropdownMenuTrigger className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-tr from-brand-600 to-brand-500 text-white font-bold text-xs ring-2 ring-brand-100 hover:ring-brand-200 transition-all cursor-pointer outline-none">
+                      {getInitials(user.email)}
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56 bg-white border border-edge-default rounded-xl p-1 shadow-md">
                       <div className="px-2.5 py-2 text-xs font-bold text-ink-primary block">

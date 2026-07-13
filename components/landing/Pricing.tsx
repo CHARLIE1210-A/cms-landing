@@ -179,6 +179,7 @@ export default function Pricing() {
                   <CardFooter className="px-6 sm:px-8 pb-8 pt-0">
                     <Button
                       render={<Link href={tier.href} />}
+                      nativeButton={false}
                       className={`w-full font-bold text-xs uppercase tracking-wider py-6 rounded-2xl border-0 shadow transition-all duration-300 ${
                         isPro
                           ? "bg-white hover:bg-neutral-100 text-brand-950 shadow-[0_4px_20px_rgba(255,255,255,0.1)]"
