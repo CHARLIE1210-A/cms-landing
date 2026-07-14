@@ -16,9 +16,9 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/lib/supabase/client";
-import { AuthAlert } from "../../_components/auth-alert";
+import { AuthAlert } from "./auth-alert";
 import { Separator } from "@/components/ui/separator";
-import { AuthLayout } from "../../_components/auth-layout";
+import { AuthLayout } from "./auth-layout";
 const supabase = createClient();
 
 const signupSchema = z
