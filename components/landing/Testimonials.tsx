@@ -36,63 +36,211 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-24 bg-surface-raised border-b border-edge-default relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="eyebrow-pill">Case Studies</span>
-          <h2 className="headline-section text-ink-primary">
-            Trusted by the contractors painting India
-          </h2>
-        </div>
+    <section className="relative overflow-hidden py-28">
 
-        {/* 3-Column Masonry Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[140px]" />
+        <div className="absolute right-0 bottom-0 h-[380px] w-[380px] rounded-full bg-sky-500/10 blur-[140px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_55%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_60%)]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+
+        {/* Header */}
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mx-auto mb-20 max-w-3xl text-center"
+        >
+
+          <div
+            className="
+          inline-flex
+          items-center
+          rounded-full
+          border
+          border-primary/20
+          bg-primary/10
+          px-4
+          py-1.5
+          text-[11px]
+          font-bold
+          uppercase
+          tracking-[0.22em]
+          text-primary
+          backdrop-blur-xl
+        "
+          >
+            Success Stories
+          </div>
+
+          <h2 className="mt-6 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Trusted by Painting Contractors
+            <span className="block text-primary">
+              Across India
+            </span>
+          </h2>
+
+          <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            Thousands of labour entries, payments, quotations and projects managed
+            every month with PaintCMS.
+          </p>
+
+        </motion.div>
+
+        {/* Reviews */}
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+
           {reviews.map((rev, idx) => (
+
             <motion.div
               key={idx}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="card-hover bg-white rounded-3xl p-8 relative transition-all duration-300 flex flex-col justify-between"
+              whileHover={{
+                y: -8,
+                scale: 1.02,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
             >
-              <Quote className="absolute top-6 right-8 w-8 h-8 text-neutral-200 opacity-30 rotate-180" />
-              
-              <div className="space-y-4 relative z-10 text-left">
-                {/* Stars */}
-                <div className="flex gap-0.5">
-                  {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-gold-500 text-gold-500" />
-                  ))}
+
+              <div
+                className="
+              group
+              relative
+              flex
+              h-full
+              flex-col
+              justify-between
+              overflow-hidden
+              rounded-[32px]
+              border
+              border-white/20
+              bg-white/70
+              p-8
+              shadow-[0_20px_60px_rgba(15,23,42,0.08)]
+              backdrop-blur-3xl
+              transition-all
+              duration-500
+
+              hover:border-primary/20
+              hover:shadow-[0_30px_80px_rgba(59,130,246,0.12)]
+
+              dark:border-white/10
+              dark:bg-slate-950/70
+            "
+              >
+
+                {/* Decorative glow */}
+
+                <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl transition-all duration-500 group-hover:bg-primary/20" />
+
+                {/* Quote icon */}
+
+                <div
+                  className="
+                absolute
+                right-8
+                top-8
+                flex
+                h-12
+                w-12
+                items-center
+                justify-center
+                rounded-2xl
+                bg-primary/10
+                text-primary/40
+              "
+                >
+                  <Quote className="h-6 w-6 rotate-180" />
                 </div>
-                
-                {/* Quote */}
-                <p className="text-ink-secondary text-sm leading-relaxed">
-                  "{rev.quote}"
-                </p>
+
+                <div className="relative z-10">
+
+                  {/* Stars */}
+
+                  <div className="mb-6 flex items-center gap-1">
+
+                    {Array.from({ length: rev.rating }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className="h-4 w-4 fill-amber-400 text-amber-400"
+                      />
+                    ))}
+
+                  </div>
+
+                  {/* Quote */}
+
+                  <blockquote className="text-[15px] leading-8 text-muted-foreground">
+                    “{rev.quote}”
+                  </blockquote>
+
+                </div>
+
+                {/* Footer */}
+
+                <div className="relative z-10 mt-10 border-t border-white/10 pt-6">
+
+                  <div className="flex items-center gap-4">
+
+                    <div
+                      className={`
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    border
+                    font-bold
+                    shadow-lg
+                    backdrop-blur-xl
+                    ${rev.avatarColor}
+                  `}
+                    >
+                      {rev.initials}
+                    </div>
+
+                    <div className="min-w-0">
+
+                      <h4 className="truncate text-base font-bold text-foreground">
+                        {rev.name}
+                      </h4>
+
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                        {rev.business}
+                      </p>
+
+                      <p className="mt-1 text-sm text-primary">
+                        {rev.location}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
 
-              {/* User Bio info */}
-              <div className="mt-8 pt-6 border-t border-edge-subtle flex items-center gap-3.5 text-left">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs border ${rev.avatarColor} shrink-0`}>
-                  {rev.initials}
-                </div>
-                <div>
-                  <h4 className="font-heading font-extrabold text-sm text-ink-primary">
-                    {rev.name}
-                  </h4>
-                  <p className="text-[10px] text-ink-tertiary font-bold uppercase tracking-wider">
-                    {rev.business} • {rev.location}
-                  </p>
-                </div>
-              </div>
             </motion.div>
+
           ))}
+
         </div>
-        
+
       </div>
+
     </section>
   );
 }
