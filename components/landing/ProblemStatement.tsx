@@ -24,72 +24,213 @@ export default function ProblemStatement() {
   ];
 
   return (
-    <section id="problems" className="py-24 bg-surface-raised border-y border-edge-default relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Heading and High-Impact stat card */}
-          <div className="lg:col-span-5 space-y-8 text-left">
-            <div className="space-y-4">
-              <span className="eyebrow-pill">The Problem</span>
-              <h2 className="headline-section">
-                Managing painting sites on paper is leaking your profits
-              </h2>
-              <p className="body-base text-ink-secondary">
-                Between supervisor attendance logs, cash advance requests, and vendor bills, it's impossible to calculate site margins accurately using diaries or WhatsApp chat history.
-              </p>
+    <section
+      id="problems"
+      className="relative overflow-hidden border-y border-white/10 py-28"
+    >
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,.08),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,.08),transparent_40%)]" />
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-start gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+
+        {/* LEFT SIDE */}
+        <div className="space-y-8 lg:col-span-6">
+
+          <div className="space-y-5">
+
+            <div className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 backdrop-blur-xl">
+              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                The Problem
+              </span>
             </div>
 
-            {/* High-Impact Leak Block */}
+            <h2 className="max-w-xl text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+              Managing painting sites on paper is quietly draining your profits.
+            </h2>
+
+            <p className="max-w-lg text-base leading-8 text-muted-foreground">
+              Attendance registers, WhatsApp chats, handwritten bills and cash
+              advances create disconnected information—making it nearly impossible
+              to know the actual profit of every project.
+            </p>
+
+          </div>
+
+          {/* Industry Fact */}
+
+          <motion.div
+            variants={scaleIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            whileHover={{
+              y: -6,
+              scale: 1.02,
+            }}
+            transition={{ duration: .35 }}
+            className="
+          relative
+          overflow-hidden
+          rounded-[34px]
+          border
+          border-rose-500/20
+          bg-white/70
+          p-8
+          shadow-[0_25px_70px_rgba(15,23,42,.08)]
+          backdrop-blur-3xl
+
+          dark:bg-slate-950/70
+        "
+          >
+
+            {/* Glow */}
+
+            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-rose-500/15 blur-3xl" />
+
+            <div className="relative space-y-5">
+
+              <div className="inline-flex rounded-full bg-rose-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-rose-500">
+                Industry Fact
+              </div>
+
+              <h3 className="text-5xl font-black tracking-tight text-rose-500">
+                ₹22,000+
+              </h3>
+
+              <p className="text-lg font-semibold text-foreground">
+                Average monthly profit leakage
+              </p>
+
+              <p className="leading-7 text-muted-foreground">
+                Painting contractors lose thousands every month because cash
+                advances, labour attendance, and material consumption aren't tracked
+                in one place.
+              </p>
+
+            </div>
+
+          </motion.div>
+
+        </div>
+
+        {/* RIGHT SIDE */}
+
+        <div className="space-y-6 lg:col-span-6">
+
+          {problems.map((prob, idx) => (
+
             <motion.div
-              variants={scaleIn}
+              key={idx}
+              variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="bg-brand-950 text-white rounded-3xl p-8 relative overflow-hidden shadow-card-lg border border-brand-900"
-            >
-              <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
-              <div className="relative z-10 space-y-4">
-                <span className="text-[10px] font-extrabold text-brand-300 uppercase tracking-widest block">
-                  Industry Fact
-                </span>
-                <h3 className="font-heading font-bold text-2xl sm:text-3xl tracking-tight leading-tight">
-                  ₹22,000+ Lost
-                </h3>
-                <p className="text-xs text-brand-100 leading-relaxed font-medium">
-                  The average painting contractor in India loses more than ₹22,000 per month due to undocumented cash advances, duplicate worker attendance entries, and material waste.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+              whileHover={{
+                y: -6,
+                scale: 1.015,
+              }}
+              transition={{
+                duration: .3,
+              }}
+              className="
+            group
+            relative
+            overflow-hidden
+            rounded-[32px]
+            border
+            border-white/20
+            bg-white/65
+            p-6
+            shadow-[0_20px_60px_rgba(15,23,42,.08)]
+            backdrop-blur-3xl
 
-          {/* Right Column: Stacked Problem List */}
-          <div className="lg:col-span-7 space-y-6">
-            {problems.map((prob, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="card-feature bg-white flex flex-col sm:flex-row items-start gap-5"
-              >
-                <div className="p-3 bg-surface-base rounded-2xl border border-edge-subtle shrink-0">
+            dark:border-white/10
+            dark:bg-slate-950/70
+          "
+            >
+
+              {/* Hover Glow */}
+
+              <div
+                className="
+              absolute
+              inset-0
+              opacity-0
+              transition-opacity
+              duration-500
+
+              group-hover:opacity-100
+              bg-gradient-to-r
+              from-primary/5
+              via-transparent
+              to-primary/5
+            "
+              />
+
+              <div className="relative flex flex-col gap-5 sm:flex-row">
+
+                {/* Icon */}
+
+                <div
+                  className="
+                flex
+                h-12
+                w-12
+                shrink-0
+                items-center
+                justify-center
+
+                rounded-2xl
+
+                border
+                border-primary/15
+
+                bg-primary/10
+
+                text-primary
+
+                shadow-lg
+                shadow-primary/10
+
+                transition-transform
+                duration-300
+
+                group-hover:scale-110
+              "
+                >
                   {prob.icon}
                 </div>
-                <div className="text-left space-y-1.5">
-                  <h3 className="headline-card text-ink-primary">
-                    {prob.title}
-                  </h3>
-                  <p className="body-sm text-ink-secondary">
+
+                {/* Content */}
+
+                <div className="space-y-3">
+
+                  <div className="flex items-center gap-3">
+
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-xs font-black text-primary">
+                      {String(idx + 1).padStart(2, "0")}
+                    </div>
+
+                    <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                      {prob.title}
+                    </h3>
+
+                  </div>
+
+                  <p className="leading-7 text-muted-foreground">
                     {prob.description}
                   </p>
+
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+              </div>
+
+            </motion.div>
+
+          ))}
 
         </div>
+
       </div>
     </section>
   );
