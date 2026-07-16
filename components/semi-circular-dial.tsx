@@ -69,13 +69,34 @@ export function SemiCircularDial({
                 />
 
                 {/* Active Indicator (Fixed in center bottom) */}
-                <div
-                    className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none"
-                >
-                    <div className="h-8 w-[2px] rounded-full bg-gradient-to-b from-primary to-primary/0 shadow-[0_0_12px_theme(colors.primary)]" />
+                <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center pointer-events-none">
+                    {/* Indicator */}
+                    <div className="h-8 w-[2px] rounded-full bg-gradient-to-b from-primary via-primary/70 to-transparent shadow-[0_0_18px_rgba(var(--primary),0.35)]" />
 
-                    <div className="mt-2 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg">
-                        {items[activeIndex].label}
+                    {/* Active Label */}
+                    <div
+                        className="
+            mt-3
+            rounded-full
+            border border-white/60
+            bg-white/65
+            backdrop-blur-2xl
+            px-4
+            py-1.5
+            shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+        "
+                    >
+                        <span
+                            className="
+                text-[11px]
+                font-semibold
+                tracking-[0.18em]
+                uppercase
+                text-zinc-800
+            "
+                        >
+                            {items[activeIndex].label}
+                        </span>
                     </div>
                 </div>
 
@@ -84,7 +105,8 @@ export function SemiCircularDial({
                     className="absolute bottom-0 left-1/2 h-0 w-0"
                     style={{
                         transform: `rotate(${rotation}deg)`,
-                        transition: "transform 300ms cubic-bezier(0.19, 1, 0.22, 1)",
+                        transition:
+                            "transform 550ms cubic-bezier(0.22, 1, 0.36, 1)",
                         willChange: "transform",
                     }}
                 >
@@ -105,30 +127,23 @@ export function SemiCircularDial({
                                     setActiveIndex(index % items.length);
                                 }}
                                 className={cn(
-                                    "absolute flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300",
+                                    "absolute flex items-center gap-2 rounded-full px-4 py-2 transition-[background-color,box-shadow,color] duration-500 ease-out",
                                     active
-                                        ? "scale-110 bg-primary text-white shadow-xl"
+                                        ? "scale-110 bg-primary text-foreground shadow-xl"
                                         : "bg-white/70 text-zinc-600 backdrop-blur-xl hover:scale-105 hover:bg-white"
                                 )}
                                 style={{
                                     left: "0px",
                                     bottom: "0px",
-                                    transform: `translate(calc(-50% + ${x}px), ${-y}px)`,
+                                    transform: `translate(calc(-50% + ${x}px), ${-y}px) rotate(${-rotation}deg)`,
+                                    transition: "transform 550ms cubic-bezier(0.22, 1, 0.36, 1)",
+                                    willChange: "transform",
                                 }}
                             >
-                                <div
-                                    className="flex items-center gap-2"
-                                    style={{
-                                        transform: `rotate(${-rotation}deg)`,
-                                        transition: "transform 300ms cubic-bezier(0.19, 1, 0.22, 1)",
-                                        willChange: "transform",
-                                    }}
-                                >
-                                    <Icon className="h-4 w-4" />
-                                    <span className="text-xs font-medium">
-                                        {item.label}
-                                    </span>
-                                </div>
+                                <Icon className="h-4 w-4" />
+                                <span className="text-xs font-medium">
+                                    {item.label}
+                                </span>
                             </button>
                         );
                     })}

@@ -34,10 +34,10 @@ export default function Hero() {
 
   const previewItems = [
     { id: "dashboard", label: "Dashboard", src: "/preview/dashboard.png", icon: LayoutDashboard },
-    { id: "attendance", label: "Attendance", src: "/preview/attendance.png", icon: CalendarRange },
-    { id: "payroll", label: "Payroll", src: "/preview/payroll.png", icon: IndianRupee },
     { id: "sites", label: "Sites", src: "/preview/sites.png", icon: Building2 },
     { id: "works", label: "Works", src: "/preview/worker.png", icon: Hammer },
+    { id: "payroll", label: "Payroll", src: "/preview/payroll.png", icon: IndianRupee },
+    { id: "attendance", label: "Attendance", src: "/preview/attendance.png", icon: CalendarRange },
   ];
 
   const wheelRotation = (2 - activeIndex) * 30;
