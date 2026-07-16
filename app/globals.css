@@ -126,6 +126,8 @@
   --brand-primary: #2563eb;
   --brand-secondary: #1d4ed8;
   --brand-muted: #eff6ff;
+  --brand-500-rgb: 59, 130, 246;
+  --brand-600-rgb: 37, 99, 235;
 
   /* Gold accent */
   --gold-primary: #f59e0b;

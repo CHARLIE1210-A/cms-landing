@@ -78,16 +78,19 @@ export function ProductPreview({ items }: ProductPreviewProps) {
 
     return (
         <div
-            className="flex flex-col items-center"
+            className="relative flex flex-col items-center"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
         >
+            {/* ambient glow behind the mac screen */}
+            <div className="absolute -inset-x-10 -top-10 -bottom-10 -z-10 pointer-events-none">
+                <div className="w-full h-full bg-gradient-to-b from-brand-400/15 via-transparent to-transparent blur-3xl" />
+            </div>
 
             {/* ---------------- Mac Screen ---------------- */}
-            <div {...handlers}>
-                <MacbookScreen className="w-full">
+            <div {...handlers} className="relative w-full">
+                <MacbookScreen className="w-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.25)]">
                     <BrowserFrame url="app.cms.io">
-
                         <div className="relative overflow-hidden bg-[#0b0b0d]">
                             {items.map((item, index) => {
                                 const active = index === activeIndex;
@@ -117,9 +120,11 @@ export function ProductPreview({ items }: ProductPreviewProps) {
                                 );
                             })}
                         </div>
-
                     </BrowserFrame>
                 </MacbookScreen>
+
+                {/* soft contact shadow / reflection under the screen */}
+                <div className="mx-auto mt-4 h-6 w-[70%] rounded-full bg-black/20 blur-2xl" />
             </div>
 
             {/* Dial */}
@@ -128,7 +133,6 @@ export function ProductPreview({ items }: ProductPreviewProps) {
                 activeIndex={activeIndex}
                 setActiveIndex={setActiveIndex}
             />
-
         </div>
     );
 }
