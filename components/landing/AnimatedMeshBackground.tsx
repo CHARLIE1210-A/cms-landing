@@ -96,21 +96,9 @@ export function AnimatedMeshBackground() {
         "
       />
 
-      {/* Rotating Fluid Mesh Gradients */}
+      {/* Fluid Mesh Gradients */}
       <div className="absolute left-1/2 top-[-22rem] h-[56rem] w-[90rem] -translate-x-1/2 w-full h-full">
-        <motion.div
-          animate={{
-            rotate: 360,
-            scale: [1, 1.15, 0.95, 1.08, 0.98, 1],
-            opacity: [0.90, 0.98, 0.82, 0.96, 0.86, 0.90]
-          }}
-          transition={{
-            rotate: { duration: 80, repeat: Infinity, ease: "linear" },
-            scale: { duration: 24, repeat: Infinity, ease: "easeInOut" },
-            opacity: { duration: 16, repeat: Infinity, ease: "easeInOut" }
-          }}
-          className="w-full h-full origin-center"
-        >
+        <div className="w-full h-full origin-center">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={index}
@@ -122,7 +110,7 @@ export function AnimatedMeshBackground() {
               style={{ background: schemes[index].background }}
             />
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
 
       {/* Top Overlay Fade */}
