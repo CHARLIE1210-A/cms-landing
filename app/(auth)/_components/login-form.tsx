@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,6 +34,9 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect_to") || "http://localhost:3001/";
+
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -68,7 +71,11 @@ export function LoginForm({
 
       setSuccessMsg("Logged in successfully! Redirecting...");
       setTimeout(() => {
-        router.push("/dashboard");
+        if (redirectTo.startsWith("http://") || redirectTo.startsWith("https://")) {
+          window.location.href = redirectTo;
+        } else {
+          router.push(redirectTo);
+        }
       }, 1500);
     } catch (err: any) {
       setErrorMsg(err.message || "Something went wrong. Please check your credentials.");
@@ -81,10 +88,14 @@ export function LoginForm({
     setGoogleLoading(true);
     setErrorMsg(null);
     try {
+      const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
+      if (redirectTo) {
+        callbackUrl.searchParams.set("next", redirectTo);
+      }
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: callbackUrl.toString(),
         },
       });
 

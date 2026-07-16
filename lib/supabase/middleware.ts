@@ -30,11 +30,16 @@ export async function updateSession(request: NextRequest) {
   // This refreshes the session if expired - critical for cookie auth!
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Optional: Redirect unauthenticated users trying to access dashboard
-  if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
+  // Redirect /dashboard requests to the main application dashboard on port 3001
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    if (!user) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    } else {
+      const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3001/';
+      return NextResponse.redirect(new URL(dashboardUrl))
+    }
   }
 
   return supabaseResponse

@@ -97,10 +97,12 @@ export function SignupForm({
     setGoogleLoading(true);
     setErrorMsg(null);
     try {
+      const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
+      callbackUrl.searchParams.set("next", "http://localhost:3001/");
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: callbackUrl.toString(),
         },
       });
 
