@@ -81,9 +81,8 @@ export function LoginForm({
           
           if (redirectUrl.origin !== currentUrl.origin) {
             const transferUrl = new URL(`${redirectUrl.origin}/auth/session-transfer`);
-            transferUrl.searchParams.set("access_token", session.access_token);
-            transferUrl.searchParams.set("refresh_token", session.refresh_token);
             transferUrl.searchParams.set("redirect_to", redirectTo);
+            transferUrl.hash = `access_token=${session.access_token}&refresh_token=${session.refresh_token}`;
             window.location.replace(transferUrl.toString());
             return;
           }

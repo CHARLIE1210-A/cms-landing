@@ -49,9 +49,8 @@ export async function GET(request: Request) {
         
         if (nextUrl.origin !== requestUrl.origin) {
           const transferUrl = new URL(`${nextUrl.origin}/auth/session-transfer`);
-          transferUrl.searchParams.set("access_token", session.access_token);
-          transferUrl.searchParams.set("refresh_token", session.refresh_token);
           transferUrl.searchParams.set("redirect_to", next);
+          transferUrl.hash = `access_token=${session.access_token}&refresh_token=${session.refresh_token}`;
           return NextResponse.redirect(transferUrl.toString());
         }
         return NextResponse.redirect(next);
