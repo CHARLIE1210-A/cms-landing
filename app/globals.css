@@ -11,7 +11,7 @@
   --font-display: var(--font-playfair), Georgia, serif;
   --font-heading: var(--font-playfair), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
-  
+
   --color-neutral-0: #ffffff;
   --color-neutral-50: #fafaf9;
   --color-neutral-100: #f5f5f3;
@@ -104,43 +104,43 @@
 
 :root {
   /* Surface */
-  --surface-base:    #fafaf9;
-  --surface-raised:  #ffffff;
+  --surface-base: #fafaf9;
+  --surface-raised: #ffffff;
   --surface-overlay: #f5f5f3;
-  --surface-sunken:  #f0f0ed;
+  --surface-sunken: #f0f0ed;
 
   /* Ink */
-  --ink-primary:   #18180f;
+  --ink-primary: #18180f;
   --ink-secondary: #525249;
-  --ink-tertiary:  #a3a39b;
-  --ink-inverse:   #ffffff;
-  --ink-brand:     #2563eb;
+  --ink-tertiary: #a3a39b;
+  --ink-inverse: #ffffff;
+  --ink-brand: #2563eb;
 
   /* Edge */
-  --edge-subtle:  rgb(0 0 0 / 0.05);
+  --edge-subtle: rgb(0 0 0 / 0.05);
   --edge-default: rgb(0 0 0 / 0.09);
-  --edge-strong:  rgb(0 0 0 / 0.15);
-  --edge-brand:   rgb(37 99 235 / 0.4);
+  --edge-strong: rgb(0 0 0 / 0.15);
+  --edge-brand: rgb(37 99 235 / 0.4);
 
   /* Brand */
-  --brand-primary:   #2563eb;
+  --brand-primary: #2563eb;
   --brand-secondary: #1d4ed8;
-  --brand-muted:     #eff6ff;
+  --brand-muted: #eff6ff;
 
   /* Gold accent */
   --gold-primary: #f59e0b;
-  --gold-muted:   #fffbeb;
+  --gold-muted: #fffbeb;
 
   /* Radius */
-  --radius:    0.625rem;
+  --radius: 0.625rem;
   --radius-sm: 0.375rem;
   --radius-lg: 0.875rem;
   --radius-xl: 1.25rem;
 
   /* Transitions */
-  --duration-fast:   150ms;
-  --duration-base:   250ms;
-  --duration-slow:   400ms;
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
 
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
@@ -148,28 +148,29 @@
   --font-heading: var(--font-playfair);
 
   /* shadcn/ui compatibility tokens */
-  --background:       var(--surface-base);
-  --foreground:       var(--ink-primary);
-  --card:             var(--surface-base);
-  --card-foreground:  var(--ink-primary);
-  --popover:          var(--surface-base);
+  --background: var(--surface-base);
+  --foreground: var(--ink-primary);
+  --card: var(--surface-base);
+  --card-foreground: var(--ink-primary);
+  --popover: var(--surface-base);
   --popover-foreground: var(--ink-primary);
-  --primary:          var(--brand-primary);
+  --primary: var(--brand-primary);
   --primary-foreground: #ffffff;
-  --secondary:        var(--surface-overlay);
+  --secondary: var(--surface-overlay);
   --secondary-foreground: var(--ink-primary);
-  --muted:            var(--surface-overlay);
+  --muted: var(--surface-overlay);
   --muted-foreground: var(--ink-tertiary);
-  --accent:           var(--surface-overlay);
+  --accent: var(--surface-overlay);
   --accent-foreground: var(--ink-primary);
-  --destructive:      #ef4444;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border:           var(--edge-default);
-  --input:            var(--edge-default);
-  --ring:             var(--brand-primary);
+  --border: var(--edge-default);
+  --input: var(--edge-default);
+  --ring: var(--brand-primary);
 }
 
 @layer base {
+
   *,
   *::before,
   *::after {
@@ -179,7 +180,7 @@
 
   html {
     font-size: 16px;
-    -webkit-font-smoothing:  antialiased;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
@@ -195,7 +196,9 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-playfair), Georgia, serif;
     font-weight: 700;
     color: var(--ink-primary);
@@ -203,19 +206,38 @@
     line-height: 1.1;
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-inter), system-ui, sans-serif;
     font-weight: 600;
     color: var(--ink-primary);
     letter-spacing: -0.01em;
   }
 
-  h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
-  h2 { font-size: clamp(1.875rem, 4vw, 3rem); }
-  h3 { font-size: clamp(1.375rem, 2.5vw, 1.875rem); }
-  h4 { font-size: 1.25rem; }
-  h5 { font-size: 1.125rem; }
-  h6 { font-size: 1rem; }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+  }
+
+  h3 {
+    font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1.125rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
 
   p {
     color: var(--ink-secondary);
@@ -243,13 +265,23 @@
     color: var(--ink-primary);
   }
 
-  ::-webkit-scrollbar       { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   ::-webkit-scrollbar-thumb {
     background: var(--edge-strong);
     border-radius: 9999px;
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--ink-tertiary); }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-tertiary);
+  }
 }
 
 @layer components {
@@ -262,35 +294,26 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-1.5
-           text-xs font-semibold uppercase tracking-[0.12em]
-           text-brand-600;
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-brand-600;
   }
 
   .eyebrow-pill {
-    @apply inline-flex items-center gap-1.5
-           text-xs font-semibold uppercase tracking-[0.12em]
-           text-brand-600
-           rounded-full border border-brand-200
-           bg-brand-50 px-3 py-1;
+    @apply inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-brand-600 rounded-full border border-brand-200 bg-brand-50 px-3 py-1;
   }
 
   .headline-display {
     font-family: var(--font-playfair), Georgia, serif;
-    @apply text-5xl font-bold leading-[1.05] tracking-[-0.04em]
-           text-neutral-950 sm:text-6xl lg:text-7xl;
+    @apply text-5xl font-bold leading-[1.05] tracking-[-0.04em] text-neutral-950 sm:text-6xl lg:text-7xl;
   }
 
   .headline-section {
     font-family: var(--font-playfair), Georgia, serif;
-    @apply text-3xl font-bold leading-tight tracking-[-0.03em]
-           text-neutral-900 sm:text-4xl lg:text-5xl;
+    @apply text-3xl font-bold leading-tight tracking-[-0.03em] text-neutral-900 sm:text-4xl lg:text-5xl;
   }
 
   .headline-card {
     font-family: var(--font-playfair), Georgia, serif;
-    @apply text-xl font-bold leading-snug tracking-[-0.02em]
-           text-neutral-900 sm:text-2xl;
+    @apply text-xl font-bold leading-snug tracking-[-0.02em] text-neutral-900 sm:text-2xl;
   }
 
   .body-lg {
@@ -306,126 +329,79 @@
   }
 
   .card-base {
-    @apply rounded-2xl border border-neutral-200/80
-           bg-white shadow-card
-           transition-shadow duration-250;
+    @apply rounded-2xl border border-neutral-200/80 bg-white shadow-card transition-shadow duration-250;
   }
 
   .card-hover {
-    @apply rounded-2xl border border-neutral-200/80
-           bg-white shadow-card
-           transition-shadow duration-250
-           hover:shadow-card-md hover:border-neutral-300/60;
+    @apply rounded-2xl border border-neutral-200/80 bg-white shadow-card transition-shadow duration-250 hover:shadow-card-md hover:border-neutral-300/60;
   }
 
   .card-feature {
-    @apply rounded-2xl border border-neutral-200/80
-           bg-white shadow-card
-           transition-shadow duration-250
-           hover:shadow-card-md hover:border-neutral-300/60
-           p-8 cursor-default;
+    @apply rounded-2xl border border-neutral-200/80 bg-white shadow-card transition-shadow duration-250 hover:shadow-card-md hover:border-neutral-300/60 p-8 cursor-default;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2
-           rounded-xl font-semibold
-           transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-           focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-brand-500
-           disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-[250ms] ease-[cubic-bezier(0.19, _1, _0.22, _1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2
-           rounded-xl font-semibold
-           transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-           focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-brand-500
-           disabled:opacity-50 disabled:cursor-not-allowed
-           bg-brand-600 text-white shadow-card
-           hover:bg-brand-700 hover:shadow-card-md hover:-translate-y-0.5
-           active:translate-y-0 active:shadow-card;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-[250ms] ease-[cubic-bezier(0.19, _1, _0.22, _1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50 disabled:cursor-not-allowed bg-brand-600 text-white shadow-card hover:bg-brand-700 hover:shadow-card-md hover:-translate-y-0.5 active:translate-y-0 active:shadow-card;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2
-           rounded-xl font-semibold
-           transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-           focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-brand-500
-           disabled:opacity-50 disabled:cursor-not-allowed
-           bg-white text-neutral-800 border border-neutral-200
-           shadow-card-sm
-           hover:border-neutral-300 hover:shadow-card hover:-translate-y-0.5
-           active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-[250ms] ease-[cubic-bezier(0.19, _1, _0.22, _1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50 disabled:cursor-not-allowed bg-white text-neutral-800 border border-neutral-200 shadow-card-sm hover:border-neutral-300 hover:shadow-card hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2
-           rounded-xl font-semibold
-           transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)]
-           focus-visible:outline focus-visible:outline-2
-           focus-visible:outline-offset-2 focus-visible:outline-brand-500
-           disabled:opacity-50 disabled:cursor-not-allowed
-           text-neutral-600
-           hover:text-neutral-900 hover:bg-neutral-100;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-[250ms] ease-[cubic-bezier(0.19, _1, _0.22, _1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50 disabled:cursor-not-allowed text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100;
   }
 
-  .btn-lg  { @apply px-7 py-3.5 text-base; }
-  .btn-md  { @apply px-5 py-2.5 text-sm; }
-  .btn-sm  { @apply px-4 py-2 text-sm; }
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  .btn-md {
+    @apply px-5 py-2.5 text-sm;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
 
   .text-gradient {
-    @apply bg-gradient-to-br from-brand-600 via-brand-500 to-brand-700
-           bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-brand-600 via-brand-500 to-brand-700 bg-clip-text text-transparent;
   }
 
   .text-gradient-gold {
-    @apply bg-gradient-to-r from-gold-600 to-gold-500
-           bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-600 to-gold-500 bg-clip-text text-transparent;
   }
 
   .divider {
-    @apply h-px w-full bg-gradient-to-r
-           from-transparent via-neutral-200 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent;
   }
 
   .badge {
-    @apply inline-flex items-center gap-1
-           rounded-full px-2.5 py-0.5
-           text-xs font-semibold;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
   }
 
   .badge-brand {
-    @apply inline-flex items-center gap-1
-           rounded-full px-2.5 py-0.5
-           text-xs font-semibold
-           bg-brand-50 text-brand-700 border border-brand-200;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200;
   }
 
   .badge-gold {
-    @apply inline-flex items-center gap-1
-           rounded-full px-2.5 py-0.5
-           text-xs font-semibold
-           bg-gold-50 text-gold-700 border border-gold-200;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-gold-50 text-gold-700 border border-gold-200;
   }
 
   .badge-neutral {
-    @apply inline-flex items-center gap-1
-           rounded-full px-2.5 py-0.5
-           text-xs font-semibold
-           bg-neutral-100 text-neutral-600 border border-neutral-200;
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold bg-neutral-100 text-neutral-600 border border-neutral-200;
   }
 
   .skeleton {
-    @apply rounded-lg bg-neutral-100 animate-shimmer
-           bg-[length:200%_100%]
-           bg-gradient-to-r from-neutral-100 via-neutral-50 to-neutral-100;
+    @apply rounded-lg bg-neutral-100 animate-shimmer bg-[length:200%_100%] bg-gradient-to-r from-neutral-100 via-neutral-50 to-neutral-100;
   }
 
   .reveal {
-    @apply opacity-0 translate-y-4
-           transition-all duration-[600ms] ease-[cubic-bezier(0.19,1,0.22,1)];
+    @apply opacity-0 translate-y-4 transition-all duration-[600ms] ease-[cubic-bezier(0.19, _1, _0.22, _1)];
   }
 
   .reveal.in-view {
@@ -438,13 +414,14 @@
   background-color: #fafaf9;
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgb(219 234 254 / 0.5), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 20%,  rgb(239 246 255 / 0.4), transparent),
-    radial-gradient(ellipse 50% 60% at 10% 60%,  rgb(254 252 232 / 0.3), transparent);
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgb(239 246 255 / 0.4), transparent),
+    radial-gradient(ellipse 50% 60% at 10% 60%, rgb(254 252 232 / 0.3), transparent);
 }
 
 /* ── Pricing card — "most popular" ring ───────────────────────────────── */
 .pricing-popular {
-  @apply border-brand-300 shadow-[0_0_0_2px_theme(colors.brand.500),0_20px_40px_-8px_rgb(37_99_235_/_0.2)];
+  @apply border-brand-300;
+  box-shadow: 0 0 0 2px var(--color-brand-500), 0 20px 40px -8px rgba(37, 99, 235, 0.2);
 }
 
 /* ── Animated gradient border (used on hero CTA card) ─────────────────── */
@@ -485,4 +462,14 @@
 
 .icon-glow-gold {
   box-shadow: 0 0 0 6px rgb(245 158 11 / 0.10), 0 0 0 12px rgb(245 158 11 / 0.05);
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-220%) skewX(-12deg);
+  }
+
+  100% {
+    transform: translateX(720%) skewX(-12deg);
+  }
 }

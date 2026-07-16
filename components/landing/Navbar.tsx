@@ -302,61 +302,61 @@ export default function Navbar() {
 
                   <DropdownMenu>
 
-                    <DropdownMenuTrigger asChild>
-
-                      <motion.button
-                        whileHover={{
-                          scale: 1.05,
-                          rotate: -3,
-                        }}
-                        whileTap={{
-                          scale: 0.96,
-                        }}
-                        className="
-              relative
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              overflow-hidden
-              rounded-2xl
-              border
-              border-white/20
-              bg-white/55
-              font-bold
-              text-sm
-              text-primary
-              shadow-lg
-              backdrop-blur-2xl
-              transition-all
-              duration-300
-
-              hover:border-primary/25
-              hover:shadow-xl
-
-              dark:border-white/10
-              dark:bg-white/[0.05]
-            "
-                      >
-
-                        <span
+                    <DropdownMenuTrigger
+                      render={
+                        <motion.button
+                          whileHover={{
+                            scale: 1.05,
+                            rotate: -3,
+                          }}
+                          whileTap={{
+                            scale: 0.96,
+                          }}
                           className="
-                absolute
-                inset-0
-                bg-gradient-to-br
-                from-primary/15
-                to-violet-500/15
+                relative
+                flex
+                h-11
+                w-11
+                items-center
+                justify-center
+                overflow-hidden
+                rounded-2xl
+                border
+                border-white/20
+                bg-white/55
+                font-bold
+                text-sm
+                text-primary
+                shadow-lg
+                backdrop-blur-2xl
+                transition-all
+                duration-300
+
+                hover:border-primary/25
+                hover:shadow-xl
+
+                dark:border-white/10
+                dark:bg-white/[0.05]
               "
-                        />
+                        >
 
-                        <span className="relative">
-                          {getInitials(user.email)}
-                        </span>
+                          <span
+                            className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-br
+                  from-primary/15
+                  to-violet-500/15
+                "
+                          />
 
-                      </motion.button>
+                          <span className="relative">
+                            {getInitials(user.email)}
+                          </span>
 
-                    </DropdownMenuTrigger>
+                        </motion.button>
+                      }
+                    />
 
                     <DropdownMenuContent
                       align="end"
@@ -415,7 +415,12 @@ export default function Navbar() {
                       </div>
 
                       <DropdownMenuItem
-                        asChild
+                        render={
+                          <Link
+                            href="/dashboard"
+                            className="flex items-center gap-3 w-full"
+                          />
+                        }
                         className="
               rounded-xl
               py-3
@@ -424,28 +429,28 @@ export default function Navbar() {
               hover:bg-primary/8
             "
                       >
-                        <Link
-                          href="/dashboard"
-                          className="flex items-center gap-3"
-                        >
-                          <div className="rounded-xl bg-primary/10 p-2">
-                            <LayoutDashboard className="h-4 w-4 text-primary" />
-                          </div>
+                        <div className="rounded-xl bg-primary/10 p-2">
+                          <LayoutDashboard className="h-4 w-4 text-primary" />
+                        </div>
 
-                          <div>
-                            <p className="font-semibold">
-                              Dashboard
-                            </p>
+                        <div>
+                          <p className="font-semibold">
+                            Dashboard
+                          </p>
 
-                            <p className="text-xs text-muted-foreground">
-                              Open workspace
-                            </p>
-                          </div>
-                        </Link>
+                          <p className="text-xs text-muted-foreground">
+                            Open workspace
+                          </p>
+                        </div>
                       </DropdownMenuItem>
 
                       <DropdownMenuItem
-                        asChild
+                        render={
+                          <Link
+                            href="/dashboard/settings"
+                            className="flex items-center gap-3 w-full"
+                          />
+                        }
                         className="
               mt-1
               rounded-xl
@@ -455,24 +460,19 @@ export default function Navbar() {
               hover:bg-primary/8
             "
                       >
-                        <Link
-                          href="/dashboard/settings"
-                          className="flex items-center gap-3"
-                        >
-                          <div className="rounded-xl bg-primary/10 p-2">
-                            <Settings className="h-4 w-4 text-primary" />
-                          </div>
+                        <div className="rounded-xl bg-primary/10 p-2">
+                          <Settings className="h-4 w-4 text-primary" />
+                        </div>
 
-                          <div>
-                            <p className="font-semibold">
-                              Settings
-                            </p>
+                        <div>
+                          <p className="font-semibold">
+                            Settings
+                          </p>
 
-                            <p className="text-xs text-muted-foreground">
-                              Preferences & account
-                            </p>
-                          </div>
-                        </Link>
+                          <p className="text-xs text-muted-foreground">
+                            Preferences & account
+                          </p>
+                        </div>
                       </DropdownMenuItem>
 
                       <DropdownMenuSeparator className="my-2" />

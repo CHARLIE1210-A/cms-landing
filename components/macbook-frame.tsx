@@ -32,7 +32,7 @@ export function MacbookScreen({
           border-zinc-700/70
           bg-[#0b0b0d]
           p-[12px]
-          shadow-[0_35px_90px_rgba(0,0,0,.45)]
+          shadow-[0_40px_120px_rgba(15,23,42,.28)]
         "
             >
                 {/* Top Bezel */}
@@ -64,18 +64,20 @@ export function MacbookScreen({
                     {children}
                 </div>
 
-                {/* Aluminum Reflection */}
+
+                {/* Static Reflection */}
                 <div
                     className="
-            pointer-events-none
-            absolute
-            inset-0
-            rounded-[34px]
-            bg-gradient-to-br
-            from-white/10
-            via-transparent
-            to-white/5
-          "
+    pointer-events-none
+    absolute
+    inset-0
+    rounded-[34px]
+    bg-gradient-to-br
+    from-white/8
+    via-transparent
+    via-40%
+    to-white/[0.03]
+  "
                 />
 
                 {/* Edge Highlight */}
@@ -90,6 +92,6 @@ export function MacbookScreen({
           "
                 />
             </div>
-        </div>
+        </div >
     );
 }
