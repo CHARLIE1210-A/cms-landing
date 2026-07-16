@@ -67,85 +67,96 @@ export function SemiCircularDial({
         "
                 />
 
-                {/* Active Indicator */}
+                {/* Active Indicator (Fixed in center) */}
 
-                {(() => {
-                    const angle = startAngle + activeIndex * angleStep;
+                <div
+                    className="absolute bottom-0 left-1/2 z-20"
+                    style={{
+                        transform: "translateX(-50%) rotate(0deg)",
+                        transformOrigin: `center -${radius}px`,
+                    }}
+                >
+                    <div className="flex flex-col items-center">
+                        <div className="h-8 w-[2px] rounded-full bg-gradient-to-b from-primary to-primary/0 shadow-[0_0_12px_theme(colors.primary)]" />
 
-                    return (
-                        <motion.div
-                            layout
-                            transition={{
-                                type: "spring",
-                                stiffness: 250,
-                                damping: 22,
-                            }}
-                            className="absolute bottom-0 left-1/2 z-20"
-                            style={{
-                                transform: `translateX(-50%) rotate(${angle}deg)`,
-                                transformOrigin: `center -${radius}px`,
-                            }}
-                        >
-                            <div className="flex flex-col items-center">
-                                <div className="h-8 w-[2px] rounded-full bg-gradient-to-b from-primary to-primary/0 shadow-[0_0_12px_theme(colors.primary)]" />
+                        <div className="mt-2 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg">
+                            {items[activeIndex].label}
+                        </div>
+                    </div>
+                </div>
 
-                                <div className="mt-2 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg">
-                                    {items[activeIndex].label}
-                                </div>
-                            </div>
-                        </motion.div>
-                    );
-                })()}
+                {/* Rotating Container for Dial Items */}
 
-                {/* Dial Items */}
+                <motion.div
+                    className="absolute bottom-0 left-1/2 h-0 w-0"
+                    animate={{
+                        rotate: -(startAngle + activeIndex * angleStep),
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 150,
+                        damping: 22,
+                    }}
+                >
+                    {items.map((item, index) => {
+                        const Icon = item.icon;
 
-                {items.map((item, index) => {
-                    const Icon = item.icon;
+                        const angle = startAngle + index * angleStep;
 
-                    const angle =
-                        startAngle + index * angleStep;
+                        const rad = (angle * Math.PI) / 180;
 
-                    const rad = (angle * Math.PI) / 180;
+                        const x = Math.sin(rad) * radius;
 
-                    const x = Math.sin(rad) * radius;
+                        const y = Math.cos(rad) * radius;
 
-                    const y = Math.cos(rad) * radius;
+                        const active = index === activeIndex;
 
-                    const active = index === activeIndex;
+                        return (
+                            <button
+                                key={item.id}
+                                onClick={() => {
 
-                    return (
-                        <button
-                            key={item.id}
-                            onClick={() => {
+                                    if (index === activeIndex) return;
 
-                                if (index === activeIndex) return;
+                                    setActiveIndex(index);
 
-                                setActiveIndex(index);
+                                }}
 
-                            }}
+                                disabled={index === activeIndex}
+                                className={cn(
+                                    "absolute flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300",
 
-                            disabled={index === activeIndex}
-                            className={cn(
-                                "absolute flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-300",
+                                    active
+                                        ? "scale-110 bg-primary text-white shadow-xl"
+                                        : "bg-white/70 text-zinc-600 backdrop-blur-xl hover:scale-105 hover:bg-white"
+                                )}
+                                style={{
+                                    left: "0px",
+                                    bottom: "0px",
+                                    transform: `translate(calc(-50% + ${x}px), ${-y}px)`,
+                                }}
+                            >
+                                <motion.div
+                                    className="flex items-center gap-2"
+                                    animate={{
+                                        rotate: startAngle + activeIndex * angleStep,
+                                    }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 150,
+                                        damping: 22,
+                                    }}
+                                >
+                                    <Icon className="h-4 w-4" />
 
-                                active
-                                    ? "scale-110 bg-primary text-white shadow-xl"
-                                    : "bg-white/70 text-zinc-600 backdrop-blur-xl hover:scale-105 hover:bg-white"
-                            )}
-                            style={{
-                                left: "50%",
-                                bottom: "0px",
-                                transform: `translate(calc(-50% + ${x}px), ${-y}px)`,
-                            }}
-                        >
-                            <Icon className="h-4 w-4" />
-
-                            <span className="text-xs font-medium">
-                                {item.label}
-                            </span>
-                        </button>
-                    );
-                })}
+                                    <span className="text-xs font-medium">
+                                        {item.label}
+                                    </span>
+                                </motion.div>
+                            </button>
+                        );
+                    })}
+                </motion.div>
             </div>
         </motion.div>
     );
