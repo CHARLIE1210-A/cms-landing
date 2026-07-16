@@ -71,10 +71,26 @@ export function LoginForm({
         throw new Error(error.message);
       }
 
+      const { data: { session } } = await supabase.auth.getSession();
+
       setSuccessMsg("Logged in successfully! Redirecting...");
       setTimeout(() => {
+        if (session && (redirectTo.startsWith("http://") || redirectTo.startsWith("https://"))) {
+          const redirectUrl = new URL(redirectTo);
+          const currentUrl = new URL(window.location.href);
+          
+          if (redirectUrl.origin !== currentUrl.origin) {
+            const transferUrl = new URL(`${redirectUrl.origin}/auth/session-transfer`);
+            transferUrl.searchParams.set("access_token", session.access_token);
+            transferUrl.searchParams.set("refresh_token", session.refresh_token);
+            transferUrl.searchParams.set("redirect_to", redirectTo);
+            window.location.replace(transferUrl.toString());
+            return;
+          }
+        }
+
         if (redirectTo.startsWith("http://") || redirectTo.startsWith("https://")) {
-          window.location.href = redirectTo;
+          window.location.replace(redirectTo);
         } else {
           router.push(redirectTo);
         }

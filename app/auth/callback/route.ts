@@ -41,9 +41,19 @@ export async function GET(request: Request) {
       }
     );
 
-    const { error } = await supabaseClient.auth.exchangeCodeForSession(code);
-    if (!error) {
+    const { data: { session }, error } = await supabaseClient.auth.exchangeCodeForSession(code);
+    if (!error && session) {
       if (next.startsWith("http://") || next.startsWith("https://")) {
+        const nextUrl = new URL(next);
+        const requestUrl = new URL(request.url);
+        
+        if (nextUrl.origin !== requestUrl.origin) {
+          const transferUrl = new URL(`${nextUrl.origin}/auth/session-transfer`);
+          transferUrl.searchParams.set("access_token", session.access_token);
+          transferUrl.searchParams.set("refresh_token", session.refresh_token);
+          transferUrl.searchParams.set("redirect_to", next);
+          return NextResponse.redirect(transferUrl.toString());
+        }
         return NextResponse.redirect(next);
       }
 
