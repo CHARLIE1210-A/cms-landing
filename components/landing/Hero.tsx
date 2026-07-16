@@ -35,9 +35,10 @@ export default function Hero() {
   const previewItems = [
     { id: "dashboard", label: "Dashboard", src: "/preview/dashboard.png", icon: LayoutDashboard },
     { id: "sites", label: "Sites", src: "/preview/sites.png", icon: Building2 },
-    { id: "works", label: "Works", src: "/preview/worker.png", icon: Hammer },
-    { id: "payroll", label: "Payroll", src: "/preview/payroll.png", icon: IndianRupee },
+    { id: "workers", label: "Workers", src: "/preview/worker.png", icon: Users },
+    { id: "payroll", label: "Payroll", src: "/preview/payroll.png", icon: Wallet },
     { id: "attendance", label: "Attendance", src: "/preview/attendance.png", icon: CalendarRange },
+    { id: "advance", label: "Advance", src: "/preview/advances.png", icon: IndianRupee },
   ];
 
   const wheelRotation = (2 - activeIndex) * 30;
