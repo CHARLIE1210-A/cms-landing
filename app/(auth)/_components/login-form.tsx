@@ -35,7 +35,9 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirect_to") || "http://localhost:3001/";
+  
+  const defaultDashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:3001/";
+  const redirectTo = searchParams.get("redirect_to") || defaultDashboardUrl;
 
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);

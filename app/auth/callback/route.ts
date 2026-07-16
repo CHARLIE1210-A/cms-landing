@@ -5,7 +5,9 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "http://localhost:3001/";
+  
+  const defaultDashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:3001/";
+  const next = searchParams.get("next") ?? defaultDashboardUrl;
 
   if (code) {
     const cookieStore = await cookies();

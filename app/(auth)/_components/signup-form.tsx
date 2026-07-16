@@ -101,7 +101,9 @@ export function SignupForm({
     setErrorMsg(null);
     try {
       const callbackUrl = new URL(`${window.location.origin}/auth/callback`);
-      callbackUrl.searchParams.set("next", "http://localhost:3001/");
+      
+      const defaultDashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:3001/";
+      callbackUrl.searchParams.set("next", defaultDashboardUrl);
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
