@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 
 import { BrowserFrame } from "./browser-frame";
 import { MacbookScreen } from "./macbook-frame";
@@ -86,65 +85,41 @@ export function ProductPreview({ items }: ProductPreviewProps) {
 
             {/* ---------------- Mac Screen ---------------- */}
             <div {...handlers}>
-                <motion.div
+                <MacbookScreen className="w-full">
+                    <BrowserFrame url="app.cms.io">
 
-                    animate={{
-                        y: [0, -6, 0]
-                    }}
-
-                    transition={{
-                        duration: 7,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-
-                >
-                    <MacbookScreen className="w-full">
-                        <BrowserFrame url="app.cms.io">
-
-                            <div className="relative overflow-hidden bg-[#0b0b0d]">
-
-                                <AnimatePresence mode="wait">
-
-                                    <motion.div
-                                        key={activeItem.id}
-                                        initial={{
-                                            opacity: 0,
-                                            y: 24,
-                                            filter: "blur(10px)",
-                                        }}
-                                        animate={{
-                                            opacity: 1,
-                                            y: 0,
-                                            filter: "blur(0px)",
-                                        }}
-                                        exit={{
-                                            opacity: 0,
-                                            y: -24,
-                                            filter: "blur(10px)",
-                                        }}
-                                        transition={{
-                                            duration: 0.45,
-                                            ease: [0.22, 1, 0.36, 1],
+                        <div className="relative overflow-hidden bg-[#0b0b0d]">
+                            {items.map((item, index) => {
+                                const active = index === activeIndex;
+                                const isFirst = index === 0;
+                                return (
+                                    <div
+                                        key={item.id}
+                                        className={cn(
+                                            "w-full transition-opacity duration-300 ease-in-out",
+                                            isFirst ? "relative" : "absolute inset-0 h-full"
+                                        )}
+                                        style={{
+                                            opacity: active ? 1 : 0,
+                                            pointerEvents: active ? "auto" : "none",
+                                            willChange: "opacity",
                                         }}
                                     >
                                         <Image
-                                            src={activeItem.src}
-                                            alt={activeItem.label}
+                                            src={item.src}
+                                            alt={item.label}
                                             width={1800}
                                             height={890}
                                             priority
                                             className="block w-full h-auto select-none"
                                         />
-                                    </motion.div>
+                                    </div>
+                                );
+                            })}
+                        </div>
 
-                                </AnimatePresence>
-
-                            </div>
-
-                        </BrowserFrame>
-                    </MacbookScreen>
-                </motion.div>
+                    </BrowserFrame>
+                </MacbookScreen>
             </div>
 
             {/* Dial */}

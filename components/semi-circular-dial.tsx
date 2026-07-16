@@ -33,12 +33,6 @@ export function SemiCircularDial({
         setRotation(targetRotation);
     }, [activeIndex, angleStep, rotation]);
 
-    const springTransition = {
-        type: "spring",
-        stiffness: 140,
-        damping: 20,
-    };
-
     return (
         <motion.div
             initial={{
@@ -86,12 +80,13 @@ export function SemiCircularDial({
                 </div>
 
                 {/* Rotating Container for Dial Items */}
-                <motion.div
+                <div
                     className="absolute bottom-0 left-1/2 h-0 w-0"
-                    animate={{
-                        rotate: rotation,
+                    style={{
+                        transform: `rotate(${rotation}deg)`,
+                        transition: "transform 300ms cubic-bezier(0.19, 1, 0.22, 1)",
+                        willChange: "transform",
                     }}
-                    transition={springTransition}
                 >
                     {doubledItems.map((item, index) => {
                         const Icon = item.icon;
@@ -121,22 +116,23 @@ export function SemiCircularDial({
                                     transform: `translate(calc(-50% + ${x}px), ${-y}px)`,
                                 }}
                             >
-                                <motion.div
+                                <div
                                     className="flex items-center gap-2"
-                                    animate={{
-                                        rotate: -rotation,
+                                    style={{
+                                        transform: `rotate(${-rotation}deg)`,
+                                        transition: "transform 300ms cubic-bezier(0.19, 1, 0.22, 1)",
+                                        willChange: "transform",
                                     }}
-                                    transition={springTransition}
                                 >
                                     <Icon className="h-4 w-4" />
                                     <span className="text-xs font-medium">
                                         {item.label}
                                     </span>
-                                </motion.div>
+                                </div>
                             </button>
                         );
                     })}
-                </motion.div>
+                </div>
             </div>
         </motion.div>
     );
