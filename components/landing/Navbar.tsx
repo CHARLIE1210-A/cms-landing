@@ -118,10 +118,10 @@ export default function Navbar() {
                     <Button
                       render={<Link href="/dashboard" />}
                       nativeButton={false}
-                      className="h-9 rounded-full bg-primary px-5 font-semibold text-sm text-white shadow-md transition-all duration-300 hover:bg-primary/95 hover:shadow-lg hover:shadow-primary/15"
+                      className="h-9 rounded-full bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold px-5 text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
                     >
                       Go to Dashboard
-                      <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                      <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </Button>
                   </motion.div>
 
