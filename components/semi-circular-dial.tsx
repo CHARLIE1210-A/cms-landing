@@ -19,8 +19,8 @@ export function SemiCircularDial({
     const radius = 170;
 
     // Double the items list to create a 360-degree scroll wheel
-    const doubledItems = [...items, ...items];
-    const totalSlots = doubledItems.length;
+    // const doubledItems = [...items, ...items];
+    const totalSlots = items.length;
     const angleStep = 360 / totalSlots; // 36 degrees for 10 items
 
     // Calculate initial rotation on mount to prevent spinning from 0 on load
@@ -110,7 +110,7 @@ export function SemiCircularDial({
                         willChange: "transform",
                     }}
                 >
-                    {doubledItems.map((item, index) => {
+                    {items.map((item, index) => {
                         const Icon = item.icon;
                         const angle = index * angleStep;
                         const rad = (angle * Math.PI) / 180;
