@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "@/components/brand-asset";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -29,21 +30,8 @@ export function AuthLayout({
 
             {/* Reusable Logo / Home Header */}
             <div className="flex flex-col items-center gap-2 text-center mb-4">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="relative w-10 h-10 shadow-lg">
-                  <Image
-                    src="/logo/product-logo.svg"
-                    alt="PaintCMS Logo"
-                    fill
-                    className="object-contain animate-float"
-                  />
-                </div>
-                <div className="text-left">
-                  <p className="font-heading text-lg font-bold">
-                    Paint
-                    <span className="text-brand-600">CMS</span>
-                  </p>
-                </div>
+              <Link href="/" className="flex items-center">
+                <BrandLogo className="h-9 w-auto text-ink-primary" />
               </Link>
               <div className="mt-1">
                 <h1 className="font-heading font-extrabold text-2xl text-ink-primary">

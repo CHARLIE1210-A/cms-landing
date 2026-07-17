@@ -4,6 +4,7 @@ import { Shield, Settings, Users, Building } from "lucide-react"
 import Image from "next/image"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { BrandLogo } from "@/components/brand-asset"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -63,18 +64,8 @@ export default async function DashboardPage() {
       {/* Top Navbar */}
       <header className="sticky top-0 z-50 w-full border-b border-edge-default bg-surface/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link href="/dashboard" className="flex items-center gap-2 group">
-            <div className="relative w-7 h-7 shadow-card">
-              <Image
-                src="/logo/product-logo.svg"
-                alt="PaintCMS Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="font-heading font-bold text-base tracking-tight text-ink-primary">
-              Paint<span className="text-brand-600">CMS</span>
-            </span>
+          <Link href="/dashboard" className="flex items-center group">
+            <BrandLogo className="h-7 w-auto text-ink-primary" />
           </Link>
           <span className="text-xs text-ink-tertiary">/</span>
           <div className="flex items-center gap-1.5 bg-surface-raised px-2.5 py-1 rounded-md border border-edge-default">

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { staggerNav } from "@/lib/animations";
 import { createClient } from "@/lib/supabase/client";
+import { BrandLogo } from "@/components/brand-asset";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -136,61 +137,9 @@ export default function Navbar() {
 
             <Link
               href="/"
-              className="group relative z-10 flex items-center gap-3"
+              className="group relative z-10 flex items-center"
             >
-              <motion.div
-                whileHover={{
-                  rotate: -6,
-                  scale: 1.08,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                }}
-                className="
-            relative
-            flex
-            h-11
-            w-11
-            items-center
-            justify-center
-            rounded-2xl
-            border
-            border-white/20
-            bg-white/50
-            shadow-lg
-            backdrop-blur-xl
-            dark:border-white/10
-            dark:bg-white/[0.05]
-          "
-              >
-                <Image
-                  src="/logo/product-logo.svg"
-                  alt="PaintCMS"
-                  fill
-                  className="object-contain p-2"
-                />
-              </motion.div>
-
-              <div>
-
-                <motion.h2
-                  whileHover={{
-                    x: 2,
-                  }}
-                  className="text-xl font-black tracking-tight"
-                >
-                  Paint
-                  <span className="text-primary">
-                    CMS
-                  </span>
-                </motion.h2>
-
-                <p className="text-[11px] text-muted-foreground">
-                  Construction Management
-                </p>
-
-              </div>
+              <BrandLogo className="h-8 w-auto text-foreground" />
             </Link>
 
             {/* Desktop Navigation */}

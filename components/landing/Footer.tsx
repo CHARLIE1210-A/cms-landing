@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { BrandLogo } from "@/components/brand-asset";
 
 export default function Footer() {
   const categories = [
@@ -52,50 +53,9 @@ export default function Footer() {
 
             <Link
               href="/"
-              className="group inline-flex items-center gap-3"
+              className="group inline-flex items-center"
             >
-              <div
-                className="
-              flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-2xl
-              border
-              border-white/20
-              bg-white/60
-              shadow-xl
-              backdrop-blur-2xl
-              transition-all
-              duration-300
-              group-hover:scale-105
-              group-hover:rotate-3
-
-              dark:border-white/10
-              dark:bg-white/[0.04]
-            "
-              >
-                <Image
-                  src="/logo/product-logo.svg"
-                  alt="PaintCMS Logo"
-                  width={30}
-                  height={30}
-                />
-              </div>
-
-              <div>
-
-                <h3 className="text-2xl font-black tracking-tight">
-                  Paint
-                  <span className="text-primary">CMS</span>
-                </h3>
-
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Contractor OS
-                </p>
-
-              </div>
+              <BrandLogo className="h-9 w-auto text-foreground" />
             </Link>
 
             <p className="max-w-md leading-7 text-sm text-muted-foreground">
