@@ -88,7 +88,7 @@ export function ProductPreview({ items }: ProductPreviewProps) {
             </div>
 
             {/* ---------------- Mac Screen ---------------- */}
-            <div {...handlers} className="relative w-full">
+            <div {...handlers} className="relative w-full max-w-[850px] mx-auto z-10">
                 <MacbookScreen className="w-full drop-shadow-[0_35px_60px_rgba(0,0,0,0.25)]">
                     <BrowserFrame url="app.cms.io">
                         <div className="relative overflow-hidden bg-[#0b0b0d]">
@@ -128,11 +128,13 @@ export function ProductPreview({ items }: ProductPreviewProps) {
             </div>
 
             {/* Dial */}
-            <SemiCircularDial
-                items={items}
-                activeIndex={activeIndex}
-                setActiveIndex={setActiveIndex}
-            />
+            <div className="relative w-full -mt-[140px] z-20">
+                <SemiCircularDial
+                    items={items}
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                />
+            </div>
         </div>
     );
 }

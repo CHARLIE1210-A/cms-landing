@@ -16,7 +16,7 @@ export function SemiCircularDial({
     activeIndex,
     setActiveIndex,
 }: SemiCircularDialProps) {
-    const radius = 170;
+    const radius = 150;
 
     // Double the items list to create a 360-degree scroll wheel
     // const doubledItems = [...items, ...items];
@@ -49,9 +49,9 @@ export function SemiCircularDial({
             transition={{
                 duration: .8
             }}
-            className="relative mt-12"
+            className="relative w-full h-full"
         >
-            <div className="flex h-[230px] w-full items-end justify-center overflow-hidden">
+            <div className="relative flex h-[230px] w-full items-end justify-center overflow-hidden">
 
                 {/* Concentric Background Ring */}
                 <div
@@ -65,6 +65,7 @@ export function SemiCircularDial({
                       border-white/10
                       bg-white/[0.03]
                       backdrop-blur-xl
+                      shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]
                     "
                 />
 
@@ -74,7 +75,7 @@ export function SemiCircularDial({
                     <div className="h-8 w-[2px] rounded-full bg-gradient-to-b from-primary via-primary/70 to-transparent shadow-[0_0_18px_rgba(var(--primary),0.35)]" />
 
                     {/* Active Label */}
-                    <div
+                    {/* <div
                         className="
             mt-3
             rounded-full
@@ -97,7 +98,7 @@ export function SemiCircularDial({
                         >
                             {items[activeIndex].label}
                         </span>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Rotating Container for Dial Items */}
@@ -129,7 +130,7 @@ export function SemiCircularDial({
                                 className={cn(
                                     "absolute flex items-center gap-2 rounded-full px-4 py-2 transition-[background-color,box-shadow,color] duration-500 ease-out",
                                     active
-                                        ? "scale-110 bg-primary text-foreground shadow-xl"
+                                        ? "scale-110 bg-white text-primary border border-primary/20 shadow-md"
                                         : "bg-white/70 text-zinc-600 backdrop-blur-xl hover:scale-105 hover:bg-white"
                                 )}
                                 style={{
