@@ -73,25 +73,41 @@ export function LoginForm({
 
       const { data: { session } } = await supabase.auth.getSession();
 
+      // Check if user has an active organization membership
+      let targetRedirect = redirectTo;
+      if (session) {
+        const { data: membership } = await supabase
+          .from("memberships")
+          .select("id")
+          .eq("profile_id", session.user.id)
+          .is("deleted_at", null)
+          .limit(1)
+          .maybeSingle();
+
+        if (!membership) {
+          targetRedirect = "/onboarding";
+        }
+      }
+
       setSuccessMsg("Logged in successfully! Redirecting...");
       setTimeout(() => {
-        if (session && (redirectTo.startsWith("http://") || redirectTo.startsWith("https://"))) {
-          const redirectUrl = new URL(redirectTo);
+        if (session && (targetRedirect.startsWith("http://") || targetRedirect.startsWith("https://"))) {
+          const redirectUrl = new URL(targetRedirect);
           const currentUrl = new URL(window.location.href);
           
           if (redirectUrl.origin !== currentUrl.origin) {
             const transferUrl = new URL(`${redirectUrl.origin}/auth/session-transfer`);
-            transferUrl.searchParams.set("redirect_to", redirectTo);
+            transferUrl.searchParams.set("redirect_to", targetRedirect);
             transferUrl.hash = `access_token=${session.access_token}&refresh_token=${session.refresh_token}`;
             window.location.replace(transferUrl.toString());
             return;
           }
         }
 
-        if (redirectTo.startsWith("http://") || redirectTo.startsWith("https://")) {
-          window.location.replace(redirectTo);
+        if (targetRedirect.startsWith("http://") || targetRedirect.startsWith("https://")) {
+          window.location.replace(targetRedirect);
         } else {
-          router.push(redirectTo);
+          router.push(targetRedirect);
         }
       }, 1500);
     } catch (err: any) {

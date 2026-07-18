@@ -30,15 +30,30 @@ export async function updateSession(request: NextRequest) {
   // This refreshes the session if expired - critical for cookie auth!
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Redirect /dashboard requests to the main application dashboard on port 3001
+  // Redirect /dashboard requests to the main application dashboard on port 3001 or onboarding
   if (request.nextUrl.pathname.startsWith('/dashboard')) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = '/login'
       return NextResponse.redirect(url)
     } else {
-      const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3001/';
-      return NextResponse.redirect(new URL(dashboardUrl))
+      // Query if user has an active membership
+      const { data: membership } = await supabase
+        .from('memberships')
+        .select('id')
+        .eq('profile_id', user.id)
+        .is('deleted_at', null)
+        .limit(1)
+        .maybeSingle()
+
+      if (!membership) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/onboarding'
+        return NextResponse.redirect(url)
+      } else {
+        const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3001/';
+        return NextResponse.redirect(new URL(dashboardUrl))
+      }
     }
   }
 

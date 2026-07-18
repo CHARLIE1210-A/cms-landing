@@ -24,6 +24,9 @@ export async function createOrganization(formData: { name: string; slug: string 
     .single()
 
   if (orgError) {
+    if (orgError.code === '23505') {
+      return { error: 'This URL slug is already taken. Please try a different workspace name or modify the slug.' }
+    }
     return { error: orgError.message }
   }
 

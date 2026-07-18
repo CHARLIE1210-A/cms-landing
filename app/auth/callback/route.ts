@@ -43,28 +43,39 @@ export async function GET(request: Request) {
 
     const { data: { session }, error } = await supabaseClient.auth.exchangeCodeForSession(code);
     if (!error && session) {
-      if (next.startsWith("http://") || next.startsWith("https://")) {
-        const nextUrl = new URL(next);
+      // Check if user has an active organization membership
+      const { data: membership } = await supabaseClient
+        .from("memberships")
+        .select("id")
+        .eq("profile_id", session.user.id)
+        .is("deleted_at", null)
+        .limit(1)
+        .maybeSingle();
+
+      const targetRedirect = !membership ? "/onboarding" : next;
+
+      if (targetRedirect.startsWith("http://") || targetRedirect.startsWith("https://")) {
+        const nextUrl = new URL(targetRedirect);
         const requestUrl = new URL(request.url);
         
         if (nextUrl.origin !== requestUrl.origin) {
           const transferUrl = new URL(`${nextUrl.origin}/auth/session-transfer`);
-          transferUrl.searchParams.set("redirect_to", next);
+          transferUrl.searchParams.set("redirect_to", targetRedirect);
           transferUrl.hash = `access_token=${session.access_token}&refresh_token=${session.refresh_token}`;
           return NextResponse.redirect(transferUrl.toString());
         }
-        return NextResponse.redirect(next);
+        return NextResponse.redirect(targetRedirect);
       }
 
       const forwardedHost = request.headers.get("x-forwarded-host");
       const isLocalEnv = process.env.NODE_ENV === "development";
       
       if (isLocalEnv) {
-        return NextResponse.redirect(`${origin}${next}`);
+        return NextResponse.redirect(`${origin}${targetRedirect}`);
       } else if (forwardedHost) {
-        return NextResponse.redirect(`https://${forwardedHost}${next}`);
+        return NextResponse.redirect(`https://${forwardedHost}${targetRedirect}`);
       } else {
-        return NextResponse.redirect(`${origin}${next}`);
+        return NextResponse.redirect(`${origin}${targetRedirect}`);
       }
     }
   }
