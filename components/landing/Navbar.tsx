@@ -118,7 +118,7 @@ export default function Navbar() {
                     <Button
                       render={<Link href="/dashboard" />}
                       nativeButton={false}
-                      className="h-9 rounded-full bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold px-5 text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
+                      className="group h-9 rounded-full bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold px-5 text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
                     >
                       Go to Dashboard
                       <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -210,7 +210,7 @@ export default function Navbar() {
                     <Button
                       render={<Link href="/signup" />}
                       nativeButton={false}
-                      className="h-9 rounded-full bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold px-5 text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
+                      className="group h-9 rounded-full bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold px-5 text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
                     >
                       Start Free
                       <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -314,10 +314,10 @@ export default function Navbar() {
                         render={<Link href="/dashboard" />}
                         nativeButton={false}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="h-11 w-full rounded-xl bg-primary text-xs font-bold text-white shadow-md hover:bg-primary/95"
+                        className="group h-11 w-full rounded-xl bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
                       >
-                        <LayoutDashboard className="mr-2 h-4 w-4" />
-                        Dashboard
+                        Go to Dashboard
+                        <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Button>
 
                       <Button
@@ -346,9 +346,10 @@ export default function Navbar() {
                         render={<Link href="/signup" />}
                         nativeButton={false}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="h-11 w-full rounded-xl bg-primary text-xs font-bold text-white shadow-md hover:bg-primary/95"
+                        className="group h-11 w-full rounded-xl bg-gradient-to-r from-primary to-indigo-500 hover:from-primary/95 hover:to-indigo-500/95 text-white font-semibold text-xs shadow-md transition-all duration-300 hover:shadow-lg hover:shadow-primary/15"
                       >
                         Start Free Trial
+                        <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Button>
 
                       <Button
