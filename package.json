@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "dotenv -e .env.test.local -e .env.local -- playwright test",
+    "test:ui": "dotenv -e .env.test.local -e .env.local -- playwright test --ui",
+    "test:headed": "dotenv -e .env.test.local -e .env.local -- playwright test --headed",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -29,11 +33,14 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",

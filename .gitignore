@@ -13,6 +13,17 @@
 # testing
 /coverage
 
+# Playwright test outputs
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Auth session state & test secrets (DO NOT COMMIT PASSWORDS)
+tests/.auth/
+.env.test.local
+
+
 # next.js
 /.next/
 /out/
